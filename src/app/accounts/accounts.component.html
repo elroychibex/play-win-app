@@ -1,0 +1,58 @@
+<div class="container">
+    <div class="row">
+      <div class="col-lg-4 col-md-6 col-sm-12">
+        <div class="card border">
+        <div class="card-header d-flex bg-dark justify-content-between">
+            <span class='p-text text-white'>Your Balance</span>
+          </div>
+          <div class="card-body">                               
+            <div class="d-flex justify-content-between">
+              <span>₦2000</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-4 col-md-6 col-sm-12">
+          <div class="card border">
+          <div class="card-header d-flex bg-dark justify-content-between">
+              <span class='p-text text-white'>Load Account</span>
+            </div>
+            <div class="card-body">                               
+              <div class="d-flex justify-content-between">
+                  Buy extra units <button class="btn btn-warning px-4">Buy</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-4 col-md-6 col-sm-12">
+            <div class="card border">
+            <div class="card-header d-flex bg-dark justify-content-between">
+                <span class='p-text text-white'>Your Balance</span>
+              </div>
+              <div class="card-body">                               
+                <div class="d-flex justify-content-between">
+                    <button class="btn btn-warning" (click)="open(content)">Cash Out</button>
+                </div>
+              </div>
+            </div>
+          </div>
+      </div>
+</div>
+<!-- Cash Out Modal -->
+<ng-template #content let-modal>
+    <div class="modal-header">
+      <h4 class="modal-title" id="modal-basic-title">Cash Out</h4>
+      <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body text-center">
+      <h5>Confirm Your Bank Details</h5>
+    <p>Sani Ade Chike</p>
+    <p>Diamond Bank</p>
+    <p>0012666419</p>
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-warning">Pay Out</button>
+    </div>
+  </ng-template>

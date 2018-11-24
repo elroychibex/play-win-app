@@ -1,0 +1,198 @@
+/* .container-fluid {
+  background: #37DCE7;
+} */
+/* Falling Dices Animation Starts Here */
+.falling span {
+    display: inline-block;
+    width: 80px;
+    height: 80px;
+    margin: -280px 40px 54px -34px;    
+    background:url("../../assets/dice.png") no-repeat;    
+    -webkit-animation: falling 5s infinite linear;
+    -moz-animation: falling 5s infinite linear;
+    }
+
+    .falling span:nth-child(5n+5) {
+        -webkit-animation-delay: 1s;
+        -moz-animation-delay: 1s;
+        }
+        
+        .falling span:nth-child(3n+2) {
+        -webkit-animation-delay: 1.5s;
+        -moz-animation-delay: 1.5s;
+        }
+        
+        .falling span:nth-child(2n+5) {
+        -webkit-animation-delay: 1.7s;
+        -moz-animation-delay: 1.7s;
+        }
+
+        @-webkit-keyframes falling {
+            0% {
+            opacity: 1;
+            -webkit-transform: translate(0, 0px) rotateZ(0deg);
+            }
+            75% {
+            opacity: 1;
+            -webkit-transform: translate(100px, 600px) rotateZ(270deg);
+            }
+            100% {
+            opacity: 0;
+            -webkit-transform: translate(150px, 800px) rotateZ(360deg);
+            }
+            }
+    /* Falling Animation Ends Here */
+
+    /* Spinner Wheel Animation Starts Here */
+    #contain {
+        /* position: absolute; */
+        left: 60%;
+        height: 60px;
+        width: 60px;
+        border-radius: 50%;
+        background: #272727;
+      }
+      .circle1 {
+        position: relative;
+        top: 0px;
+        width: 0px;
+        height: 0px;
+        border-right: 30px solid transparent;
+        border-top: 30px solid #1ba7f2;
+        border-left: 30px solid transparent;
+        border-bottom: 30px solid transparent;
+        border-top-left-radius: 30px;
+        border-top-right-radius: 30px;
+        -moz-transform:rotate(320deg);
+        -webkit-transform:rotate(320deg);
+        -o-transform:rotate(320deg);
+        -ms-transform:rotate(320deg);
+        animation: spin1 5s infinite linear;
+        -webkit-animation: spin1 5s infinite linear;
+        
+      }
+      .circle2 {
+        position: absolute;
+        top: 230px;
+        width: 0px;
+        height: 0px;
+        border-right: 30px solid transparent;
+        border-top: 30px solid #f23b1b;
+        border-left: 30px solid transparent;
+        border-bottom: 30px solid transparent;
+        border-top-left-radius: 30px;
+        border-top-right-radius: 30px;
+        -moz-transform:rotate(80deg);
+        -webkit-transform:rotate(80deg);
+        -o-transform:rotate(80deg);
+        -ms-transform:rotate(80deg);
+        animation: spin2 5s infinite linear;
+        -webkit-animation: spin2 5s infinite linear;
+      }
+      .circle3 {
+        position: absolute;
+        top: 230px;
+        width: 0px;
+        height: 0px;
+        border-right: 30px solid transparent;
+        border-top: 30px solid #ffc107;
+        border-left: 30px solid transparent;
+        border-bottom: 30px solid transparent;
+        border-top-left-radius: 30px;
+        border-top-right-radius: 30px;
+        -moz-transform:rotate(200deg);
+        -webkit-transform:rotate(200deg);
+        -o-transform:rotate(200deg);
+        -ms-transform:rotate(200deg);
+        animation: spin3 5s infinite linear;
+        -webkit-animation: spin3 5s infinite linear;
+      }
+      /* animations */
+      
+      @keyframes spin1 {
+        0% {
+        -moz-transform:rotate(320deg);
+        -webkit-transform:rotate(320deg);
+        -o-transform:rotate(320deg);
+        -ms-transform:rotate(320deg);
+        }
+        100% {
+        -moz-transform:rotate(680deg);
+        -webkit-transform:rotate(680deg);
+        -o-transform:rotate(680deg);
+        -ms-transform:rotate(680deg); 
+        }
+      }
+      @-webkit-keyframes spin1 {
+        0% {
+        -moz-transform:rotate(320deg);
+        -webkit-transform:rotate(320deg);
+        -o-transform:rotate(320deg);
+        -ms-transform:rotate(320deg);
+        }
+        100% {
+        -moz-transform:rotate(680deg);
+        -webkit-transform:rotate(680deg);
+        -o-transform:rotate(680deg);
+        -ms-transform:rotate(680deg); 
+        }
+      }
+      @keyframes spin2 {
+        0% {
+        -moz-transform:rotate(80deg);
+        -webkit-transform:rotate(80deg);
+        -o-transform:rotate(80deg);
+        -ms-transform:rotate(80deg);
+        }
+        100% {
+        -moz-transform:rotate(440deg);
+        -webkit-transform:rotate(440deg);
+        -o-transform:rotate(440deg);
+        -ms-transform:rotate(440deg); 
+        }
+      }
+      @-webkit-keyframes spin2 {
+        0% {
+        -moz-transform:rotate(80deg);
+        -webkit-transform:rotate(80deg);
+        -o-transform:rotate(80deg);
+        -ms-transform:rotate(80deg);
+        }
+        100% {
+        -moz-transform:rotate(440deg);
+        -webkit-transform:rotate(440deg);
+        -o-transform:rotate(440deg);
+        -ms-transform:rotate(440deg); 
+        }
+      }
+      @keyframes spin3 {
+        0% {
+        -moz-transform:rotate(200deg);
+        -webkit-transform:rotate(200deg);
+        -o-transform:rotate(200deg);
+        -ms-transform:rotate(200deg);
+        }
+        100% {
+        -moz-transform:rotate(560deg);
+        -webkit-transform:rotate(560deg);
+        -o-transform:rotate(560deg);
+        -ms-transform:rotate(560deg); 
+        }
+      }
+      @-webkit-keyframes spin3 {
+        0% {
+        -moz-transform:rotate(200deg);
+        -webkit-transform:rotate(200deg);
+        -o-transform:rotate(200deg);
+        -ms-transform:rotate(200deg);
+        }
+        100% {
+        -moz-transform:rotate(560deg);
+        -webkit-transform:rotate(560deg);
+        -o-transform:rotate(560deg);
+        -ms-transform:rotate(560deg); 
+        }
+      }
+      /* Spinner Wheel Animation Ends Here */
+
+    

@@ -1,0 +1,75 @@
+<div class="container">
+    <ngb-tabset>
+        <ngb-tab title="Play History">
+          <ng-template ngbTabContent>
+              <table>
+                  <thead>
+                    <tr>
+                      <th scope="col">Serial Number</th>
+                      <th scope="col">Amount Played</th>
+                      <th scope="col">Status</th>        
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td data-label="Account">3412</td>
+                      <td data-label="Due Date">₦50</td>
+                      <td data-label="Amount" class="text-success"><strong>WON</strong></td>
+                    </tr>
+                    <tr>
+                      <td scope="row" data-label="Account">6076</td>
+                      <td data-label="Due Date">₦100</td>
+                      <td data-label="Amount" class="text-danger"><strong>LOST</strong></td>
+                    </tr>
+                    <tr>
+                      <td scope="row" data-label="Account">5871</td>
+                      <td data-label="Due Date">₦200</td>
+                      <td data-label="Amount" class="text-success"><strong>WON</strong></td>
+                    </tr>
+                    <tr>
+                      <td scope="row" data-label="Acount">1012</td>
+                      <td data-label="Due Date">₦500</td>
+                      <td data-label="Amount" class="text-danger"><strong>LOST</strong></td>
+                    </tr>
+                  </tbody>
+                </table>
+          </ng-template>
+        </ngb-tab>
+        <ngb-tab title="Transaction History">
+          <ng-template ngbTabContent>
+              <table>
+                  <thead>
+                    <tr>
+                      <th scope="col">Account</th>
+                      <th scope="col">Date Purchased</th>
+                      <th scope="col">Amount</th>        
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td data-label="Account">Visa - 3412</td>
+                      <td data-label="Due Date">04/01/2016</td>
+                      <td data-label="Amount">₦5000</td>
+                    </tr>
+                    <tr>
+                      <td scope="row" data-label="Account">Visa - 6076</td>
+                      <td data-label="Due Date">03/01/2016</td>
+                      <td data-label="Amount">₦10000</td>
+                    </tr>
+                    <tr>
+                      <td scope="row" data-label="Account">Corporate AMEX</td>
+                      <td data-label="Due Date">03/01/2016</td>
+                      <td data-label="Amount">₦2000</td>
+                    </tr>
+                    <tr>
+                      <td scope="row" data-label="Acount">Visa - 3412</td>
+                      <td data-label="Due Date">02/01/2016</td>
+                      <td data-label="Amount">₦2000</td>
+                    </tr>
+                  </tbody>
+                </table>
+          </ng-template>          
+        </ngb-tab>        
+      </ngb-tabset>
+
+</div>

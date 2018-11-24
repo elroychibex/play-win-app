@@ -1,0 +1,79 @@
+<div class="container">
+    <h4>Edit Profile</h4>
+    <div class="row">
+     <div class="col-lg-6 col-md-12">
+  <form>
+      <div class="form-row py-2">
+          <div class="form-group col-md-6">                      
+            <input type="text" class="form-control" id="validationDefault01" placeholder="First Name">
+          </div>
+          <div class="form-group col-md-6">
+            <input type="text" class="form-control" id="validationDefault02" placeholder="Last Name">
+          </div>
+        </div>
+        <div class="form-row">
+            <div class="form-group col-md-6">                       
+              <input type="email" class="form-control" id="validationDefault03" placeholder="Email">
+            </div>
+            <div class="form-group col-md-6">                       
+              <input type="password" class="form-control" id="validationDefault04" placeholder="Password">
+            </div>
+          </div>
+          <div class="form-row">
+              <div class="form-group col-md-6">                         
+                  <input id="dateOfBirth" class="form-control" placeholder="Date of Birth yyyy-mm-dd" name="dp" ngbDatepicker #dp="ngbDatepicker">
+              </div>
+              <div class="form-group col-md-6">                          
+                <input type="text" class="form-control" id="validationDefault05" placeholder="Hobbies">
+              </div>
+            </div>
+      <div class="form-group">                  
+        <input type="text" class="form-control" id="inputAddress" placeholder="Your Address">
+      </div>                
+      <div class="form-row">
+          <div class="form-group col-md-6">                        
+              <select id="inputState" class="form-control">
+                <option selected>Choose Bank</option>
+                <option>Access Bank Plc</option>
+                <option>Diamond Bank Plc</option>
+                <option>Fidelity Bank Plc</option>
+                <option>First City Monument Bank Plc</option>
+                <option>First Bank of Nigeria Limited</option>
+                <option>Guaranty Trust Bank Plc</option>
+                <option>Union Bank of Nigeria Plc</option>                          
+                <option>United Bank for Africa Plc</option>  
+                <option>Citibank Nigeria Limited</option>  
+                <option>Ecobank Nigeria Plc</option>  
+                <option>Heritage Banking Company Limited</option>  
+                <option>Keystone Bank Limited</option>  
+                <option>Polaris Bank Limited (Skye Bank)</option>  
+                <option>Standard Chartered</option> 
+                <option>Sterling Bank Plc</option> 
+                <option>Unity Bank Plc</option> 
+                <option>Wema Bank Plc</option>  
+              </select>
+            </div> 
+        <div class="form-group col-md-6">
+            <input class="form-control" id="numbersOnly" pattern="[0-9.]+" type="text" placeholder="Account Number">
+        </div>                                   
+      </div>
+      <button type="submit" class="btn btn-warning">Sign Up</button>
+    </form>
+  </div>
+  <div class="col-lg-6 col-md-12">
+<p>First Name:</p>
+<p>Last Name:</p>
+<p>Email Address:</p>
+<p>Date of Birth:</p>
+<p>Hobbies:</p>
+<p>Address:</p>
+<p>Date of Birth:</p>
+<p>Bank:</p>
+<p>Account Number:</p>
+  </div>
+  </div>
+  <p>Note</p>
+  <ol>
+    <li><small>Ensure that your Names correspond with your bank names</small></li>
+  </ol>
+</div>

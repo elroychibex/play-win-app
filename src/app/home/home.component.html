@@ -1,0 +1,179 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-warning px-5">
+    <a class="navbar-brand" href="#"><img class="mr-1" src="../../assets/scratchnwinhead.png"></a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarText">
+      <ul class="navbar-nav mr-auto">
+        <!-- <li class="nav-item active">
+          <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Features</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Pricing</a>
+        </li> -->
+      </ul>
+      <span class="navbar-text">
+        <a class="nav-link btn btn-lg btn-success text-white animated infinite swing delay-2s" href="#" (click)="open(content)">Create Account/Login</a>
+      </span>
+    </div>
+  </nav>
+  
+  <div class="container-fluid py-1 bg-light">
+      <div class="container">
+      <div class="row">
+        <div class="col-lg-6 col-md-12 order-2 order-sm-1 mt-5">          
+           <h1 class="my-4">
+            Get Lucky and Change Your Life Forever!!
+          </h1>          
+          <button class="btn btn-warning my-sm-0" (click)="open(content)">Start Now</button>          
+      </div>
+        <div class="col-lg-6 col-md-12 order-1 order-sm-2 falling">          
+          <!-- Illustration Here -->
+            <span></span>
+            <span></span>
+            <span></span>
+            <img width="80%" src="../../assets/win.svg">
+            <span></span>
+            <span></span>
+            <span></span>
+          </div>
+      </div>
+  </div>
+    <div class="container-fluid my-4">
+      <div class="row"> 
+      <div class="col-md-3 text-center">
+          <i class="fas fa-4x fa-money-bill-wave text-warning m-2"> </i>
+        <h5>Little or No Capital</h5>
+        <p>Get lucky to become a millionaire with just as little as ₦100, ₦200 or ₦500 promo card. Keep winning…</p>
+      </div>
+      <div class="col-md-6 text-center">
+          <i class="fas fa-4x fa-dice text-success m-2"> </i>
+          <h5>Easy to Play</h5>
+          <p>Players do not require any skill or knowledge of any kind of sports to participate in the National Youth Sports Promo Scratch N Win Bonanza. Players do not have to predict football game results or scores to win Big. The player just need to buy the Promo Card from any authorized Agent or Shop, scratch it to reveal if the Card is one of the lucky winning numbers of the National Youth Sports Promo “Scratch N Win” Bonanza</p>
+      </div>
+      <div class="col-md-3 text-center">
+          <i class="fas fa-4x fa-fist-raised text-info m-2"> </i>
+          <h5>Highly Credible</h5>
+          <p>The Promo platform is reliable, transparent, fair and equitable. Every participant is a potential winner. Keep playing keep winning.</p>
+      </div>
+      </div>
+    </div>
+    <div class="container my-5">
+      <div class="row">
+        <div class="col-md-6">
+          <ul class="list-group">
+              <li class="list-group-item"><i class="fas fa-2x fa-check-circle text-success"></i> Guaranteed Instant Cash & Gift Items Winnings</li>
+              <li class="list-group-item"><i class="fas fa-2x fa-check-circle text-success"></i> Guaranteed Instant Redemption of Prizes</li>
+              <li class="list-group-item"><i class="fas fa-2x fa-check-circle text-success"></i> Equal Winning Opportunity</li>
+              <li class="list-group-item"> <i class="fas fa-2x fa-check-circle text-success"></i> Transparent, Credible & Trusted</li>
+              <li class="list-group-item"> <i class="fas fa-2x fa-check-circle text-success"></i> Easy to Play, No Special Skill Required</li>
+              <li class="list-group-item"> <i class="fas fa-2x fa-check-circle text-success"></i> Changing Lives...</li>
+          </ul>
+        </div>
+          <div class="col-md-6 text-center">
+              <img class="mr-1" src="../../assets/scratchnwinhead.png">
+            <p>
+                We are delighted to introduce to the public - National Youth Sports Scratch ‘N’ Win promo. The Promo is carefully and uniquely packaged to give every Nigerian equal opportunity and access to Financial Freedom. The whole idea is about giving and giving to the people a sport promotion and or gaming that is less complicated to participate but guarantee more winning opportunities with limitless chances. The Promo is strictly based on individual luck, hence, more winners shall emerge under this promo plan than in other betting or gaming platforms which presently exist.</p>
+          <a class="btn btn-lg btn-success text-white animated infinite pulse" href="#" (click)="open(content)">Create Account/Login</a>
+          </div>
+        </div>
+      
+    </div>
+  </div>
+  
+  <!-- Login Signup Modal -->
+  <ng-template #content let-modal>
+    <div class="modal-header text-center">
+      <h6 class="modal-title" id="modal-basic-title">Login or Sign Up</h6>
+      <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+      <ngb-tabset>
+        <ngb-tab title="Login">
+          <ng-template ngbTabContent>
+            <!-- Login -->
+            <form>
+              <div class="form-group py-2">
+                <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email address">               
+              </div>
+              <div class="form-group">              
+                <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+              </div>
+              <button type="submit" class="btn btn-warning" routerLink="home">Login</button>
+            </form>
+          </ng-template>
+        </ngb-tab>
+        <ngb-tab>
+          <ng-template ngbTabTitle>Sign Up</ng-template>
+          <ng-template ngbTabContent>
+            <!-- SignUp -->
+              <form>
+                  <div class="form-row py-2">
+                      <div class="form-group col-md-6">                      
+                        <input type="text" class="form-control" id="validationDefault01" placeholder="First Name">
+                      </div>
+                      <div class="form-group col-md-6">
+                        <input type="text" class="form-control" id="validationDefault02" placeholder="Last Name">
+                      </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-6">                       
+                          <input type="email" class="form-control" id="validationDefault03" placeholder="Email">
+                        </div>
+                        <div class="form-group col-md-6">                       
+                          <input type="password" class="form-control" id="validationDefault04" placeholder="Password">
+                        </div>
+                      </div>
+                      <div class="form-row">
+                          <div class="form-group col-md-6">                         
+                              <input id="dateOfBirth" class="form-control" placeholder="Date of Birth yyyy-mm-dd" name="dp" ngbDatepicker #dp="ngbDatepicker">
+                          </div>
+                          <div class="form-group col-md-6">                          
+                            <input type="text" class="form-control" id="validationDefault05" placeholder="Hobbies">
+                          </div>
+                        </div>
+                  <div class="form-group">                  
+                    <input type="text" class="form-control" id="inputAddress" placeholder="Your Address">
+                  </div>                
+                  <div class="form-row">
+                      <div class="form-group col-md-6">                        
+                          <select id="inputState" class="form-control">
+                            <option selected>Choose Bank</option>
+                            <option>Access Bank Plc</option>
+                            <option>Diamond Bank Plc</option>
+                            <option>Fidelity Bank Plc</option>
+                            <option>First City Monument Bank Plc</option>
+                            <option>First Bank of Nigeria Limited</option>
+                            <option>Guaranty Trust Bank Plc</option>
+                            <option>Union Bank of Nigeria Plc</option>                          
+                            <option>United Bank for Africa Plc</option>  
+                            <option>Citibank Nigeria Limited</option>  
+                            <option>Ecobank Nigeria Plc</option>  
+                            <option>Heritage Banking Company Limited</option>  
+                            <option>Keystone Bank Limited</option>  
+                            <option>Polaris Bank Limited (Skye Bank)</option>  
+                            <option>Standard Chartered</option> 
+                            <option>Sterling Bank Plc</option> 
+                            <option>Unity Bank Plc</option> 
+                            <option>Wema Bank Plc</option>  
+                          </select>
+                        </div> 
+                    <div class="form-group col-md-6">
+                        <input class="form-control" id="numbersOnly" pattern="[0-9.]+" type="text" placeholder="Account Number">
+                    </div>                                   
+                  </div>
+                  <button type="submit" class="btn btn-warning" routerLink="home">Sign Up</button>
+                </form>
+          </ng-template>
+        </ngb-tab>
+      </ngb-tabset>
+    </div>
+  </ng-template> 
+  
+  
+  <app-footer></app-footer>

@@ -1,1 +1,17 @@
 /* You can add global styles to this file, and also import other style files */
+@import "~bootstrap/dist/css/bootstrap.css";
+@import "~font-awesome/css/font-awesome.css";
+@import "./assets/odometer-theme-slot-machine.css";
+
+
+*{
+  font-family: 'Poppins', sans-serif;
+}
+
+body {
+  font-size: 1em;
+}
+p {
+  font-size: 1em; 
+
+} /* 16px */
