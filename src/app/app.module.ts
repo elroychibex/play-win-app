@@ -12,6 +12,7 @@ import { AccountsComponent } from './accounts/accounts.component';
 import { TransactionsComponent } from './transactions/transactions.component';
 import { ProfileComponent } from './profile/profile.component';
 import { DashboardsideComponent } from './dashboardside/dashboardside.component';
+import { TermsComponent } from './terms/terms.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { DashboardsideComponent } from './dashboardside/dashboardside.component'
     AccountsComponent,
     TransactionsComponent,
     ProfileComponent,
-    DashboardsideComponent
+    DashboardsideComponent,
+    TermsComponent
   ],
   imports: [
     BrowserModule,

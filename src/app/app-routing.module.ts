@@ -6,6 +6,7 @@ import { AccountsComponent } from './accounts/accounts.component';
 import { TransactionsComponent } from './transactions/transactions.component';
 import { ProfileComponent } from './profile/profile.component';
 import { DashboardsideComponent } from './dashboardside/dashboardside.component';
+import { TermsComponent } from './terms/terms.component';
 
 const routes: Routes = [
   {
@@ -31,11 +32,15 @@ const routes: Routes = [
       },
       {
         path: 'transactions',
-        component: TransactionsComponent
+        component: TransactionsComponent,
       },
       {
         path: 'profile',
-        component: ProfileComponent
+        component: ProfileComponent,
+      },
+      {
+        path: 'terms-and-conditions',
+        component: TermsComponent
       },
     ]
   }, 
