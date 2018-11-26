@@ -60,8 +60,7 @@ a:focus {
 }
 
 #sidebar ul.components {
-    padding: 20px 0;
-    /* border-bottom: 1px solid #47748b; */
+    padding: 4% 2%;
 }
 
 #sidebar ul p {
