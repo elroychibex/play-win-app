@@ -1,19 +1,13 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-warning px-5">
-    <a class="navbar-brand" href="#"><img class="mr-1" src="../../assets/scratchnwinhead.png"></a>
+    <a class="navbar-brand" href="#"><img class="mr-1 w-75" src="../../assets/scratchnwinhead.png"></a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarText">
       <ul class="navbar-nav mr-auto">
-        <!-- <li class="nav-item active">
-          <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Features</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Pricing</a>
-        </li> -->
+         <li class="nav-item active marquee">
+         <h3> Making You Instant Millionares!!</h3>
+        </li>            
       </ul>
       <span class="navbar-text">
         <a class="nav-link btn btn-lg btn-success text-white animated infinite swing delay-2s" href="#" (click)="open(content)">Create Account/Login</a>
@@ -24,38 +18,38 @@
   <div class="container-fluid py-1 bg-light">
       <div class="container">
       <div class="row">
-        <div class="col-lg-6 col-md-12 order-2 order-sm-1 mt-5">          
+        <div class="col-lg-5 col-md-12 order-2 order-sm-1 mt-5">          
            <h1 class="my-4">
             Making You Instant Millionares!!
           </h1>          
-          <button class="btn btn-lg btn-warning my-sm-0 px-3 animated infinite pulse delay-3s" (click)="open(content)">Let's Play</button>          
+          <button class="btn btn-lg btn-danger my-sm-0 px-3 animated infinite zoomIn delay-3s" (click)="open(content)"><h3>Let's Play</h3></button>          
       </div>
-        <div class="col-lg-6 col-md-12 order-1 order-sm-2 falling">          
+        <div class="col-lg-7 col-md-12 order-1 order-sm-2 falling">          
           <!-- Illustration Here -->
             <span></span>
             <span></span>
             <span></span>
-            <img width="80%" src="../../assets/win.svg">
+            <img src="../../assets/hppystaff.jpg">
             <span></span>
             <span></span>
             <span></span>
           </div>
       </div>
   </div>
-    <div class="container-fluid my-4">
+    <div class="container-fluid">
       <div class="row"> 
-      <div class="col-md-3 text-center">
-          <i class="fas fa-4x fa-money-bill-wave text-warning m-2"> </i>
+      <div class="col-lg-3 col-md-12 text-center mt-5">
+        <img width="20%" src="../../assets/favicon.png">
         <h4>Little or No Capital</h4>
-        <p>Get lucky to become a millionaire with just as little as ₦100, ₦200 or ₦500 promo card. Keep winning…</p>
+        <p>Get lucky to become a millionaire with just as little as ₦100, ₦200 or ₦500 promo card. Keep winning.</p>
       </div>
-      <div class="col-md-6 text-center">
-          <i class="fas fa-4x fa-dice text-success m-2"> </i>
+      <div class="col-lg-6 col-md-12 text-center">
+        <img width="10%" src="../../assets/spa-icon-2.png">
           <h4>Easy to Play</h4>
           <p>Players do not require any skill or knowledge of any kind of sports to participate in the National Youth Sports Promo Scratch N Win Bonanza. Players do not have to predict football game results or scores to win Big. The player just need to buy the Promo Card from any authorized Agent or Shop, scratch it to reveal if the Card is one of the lucky winning numbers of the National Youth Sports Promo “Scratch N Win” Bonanza</p>
       </div>
-      <div class="col-md-3 text-center">
-          <i class="fas fa-4x fa-fist-raised text-info m-2"> </i>
+      <div class="col-lg-3 col-md-12 text-center mt-5">
+        <img width="20%" src="../../assets/spa-icon-3.png">
           <h4>Highly Credible</h4>
           <p>The Promo platform is reliable, transparent, fair and equitable. Every participant is a potential winner. Keep playing keep winning.</p>
       </div>
@@ -87,7 +81,7 @@
   <!-- Login Signup Modal -->
   <ng-template #content let-modal>
     <div class="modal-header text-center">
-      <h6 class="modal-title" id="modal-basic-title">Login or Sign Up</h6>
+      <h6 class="modal-title" id="modal-basic-title">Login or Create Account</h6>
       <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
         <span aria-hidden="true">&times;</span>
       </button>
@@ -109,7 +103,7 @@
           </ng-template>
         </ngb-tab>
         <ngb-tab>
-          <ng-template ngbTabTitle>Sign Up</ng-template>
+          <ng-template ngbTabTitle>New User? Create Account</ng-template>
           <ng-template ngbTabContent>
             <!-- SignUp -->
               <form>

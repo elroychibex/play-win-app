@@ -195,4 +195,23 @@
       }
       /* Spinner Wheel Animation Ends Here */
 
-    
+/* The Sliding Text */
+      /* Make it a marquee */
+.marquee {
+  width: 450px;
+  margin: 0 auto;
+  overflow: hidden;
+  white-space: nowrap;
+  box-sizing: border-box;
+  animation: marquee 10s linear infinite;
+}
+
+.marquee:hover {
+  animation-play-state: paused
+}
+
+/* Make it move */
+@keyframes marquee {
+  0%   { text-indent: 27.5em }
+  100% { text-indent: -50em }
+}
