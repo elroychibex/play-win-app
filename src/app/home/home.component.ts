@@ -12,7 +12,10 @@ export class HomeComponent {
   constructor(private modalService: NgbModal) {}
 
   ngOnInit () {
-  
+    let a = document.querySelector('.toggle-off');
+    setInterval(() => {
+      a.classList.toggle('toggle-off');
+    }, 8000);
   }
 
   open(content) {

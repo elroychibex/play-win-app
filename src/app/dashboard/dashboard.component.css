@@ -43,7 +43,6 @@ a:focus {
     /* position: fixed;
     top: 0;
     left: 0; */
-    height: 100vh;
     /* z-index: 1; */
     background:  #37DCE7;
     transition: all 0.5s;
