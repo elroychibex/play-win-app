@@ -13,10 +13,14 @@ import { TransactionsComponent } from './transactions/transactions.component';
 import { ProfileComponent } from './profile/profile.component';
 import { DashboardsideComponent } from './dashboardside/dashboardside.component';
 import { TermsComponent } from './terms/terms.component';
+import { FormsModule } from '@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
+import { AlertsModule } from 'angular-alert-module';
 
 @NgModule({
   declarations: [
-    AppComponent,    
+    AppComponent,
     HomeComponent,
     DashboardComponent,
     FooterComponent,
@@ -29,6 +33,10 @@ import { TermsComponent } from './terms/terms.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
+    FormsModule,
+    ReactiveFormsModule,
+    HttpClientModule,
+    AlertsModule.forRoot(),
     NgbModule.forRoot()
   ],
   providers: [],
