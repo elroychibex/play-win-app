@@ -57,6 +57,11 @@ export class HomeComponent implements OnInit {
       username: ['', Validators.required, Validators.email],
       password: ['', Validators.required]
     });
+  ngOnInit () {
+    let a = document.querySelector('.toggle-off');
+    setInterval(() => {
+      a.classList.toggle('toggle-off');
+    }, 8000);
   }
 
   open(content) {

@@ -1,6 +1,7 @@
-/* .container-fluid {
-  background: #37DCE7;
-} */
+* {
+  overflow: hidden;
+}
+
 /* Falling Dices Animation Starts Here */
 .falling span {
     display: inline-block;
@@ -43,158 +44,6 @@
             }
     /* Falling Animation Ends Here */
 
-    /* Spinner Wheel Animation Starts Here */
-    #contain {
-        /* position: absolute; */
-        left: 60%;
-        height: 60px;
-        width: 60px;
-        border-radius: 50%;
-        background: #272727;
-      }
-      .circle1 {
-        position: relative;
-        top: 0px;
-        width: 0px;
-        height: 0px;
-        border-right: 30px solid transparent;
-        border-top: 30px solid #1ba7f2;
-        border-left: 30px solid transparent;
-        border-bottom: 30px solid transparent;
-        border-top-left-radius: 30px;
-        border-top-right-radius: 30px;
-        -moz-transform:rotate(320deg);
-        -webkit-transform:rotate(320deg);
-        -o-transform:rotate(320deg);
-        -ms-transform:rotate(320deg);
-        animation: spin1 5s infinite linear;
-        -webkit-animation: spin1 5s infinite linear;
-        
-      }
-      .circle2 {
-        position: absolute;
-        top: 230px;
-        width: 0px;
-        height: 0px;
-        border-right: 30px solid transparent;
-        border-top: 30px solid #f23b1b;
-        border-left: 30px solid transparent;
-        border-bottom: 30px solid transparent;
-        border-top-left-radius: 30px;
-        border-top-right-radius: 30px;
-        -moz-transform:rotate(80deg);
-        -webkit-transform:rotate(80deg);
-        -o-transform:rotate(80deg);
-        -ms-transform:rotate(80deg);
-        animation: spin2 5s infinite linear;
-        -webkit-animation: spin2 5s infinite linear;
-      }
-      .circle3 {
-        position: absolute;
-        top: 230px;
-        width: 0px;
-        height: 0px;
-        border-right: 30px solid transparent;
-        border-top: 30px solid #ffc107;
-        border-left: 30px solid transparent;
-        border-bottom: 30px solid transparent;
-        border-top-left-radius: 30px;
-        border-top-right-radius: 30px;
-        -moz-transform:rotate(200deg);
-        -webkit-transform:rotate(200deg);
-        -o-transform:rotate(200deg);
-        -ms-transform:rotate(200deg);
-        animation: spin3 5s infinite linear;
-        -webkit-animation: spin3 5s infinite linear;
-      }
-      /* animations */
-      
-      @keyframes spin1 {
-        0% {
-        -moz-transform:rotate(320deg);
-        -webkit-transform:rotate(320deg);
-        -o-transform:rotate(320deg);
-        -ms-transform:rotate(320deg);
-        }
-        100% {
-        -moz-transform:rotate(680deg);
-        -webkit-transform:rotate(680deg);
-        -o-transform:rotate(680deg);
-        -ms-transform:rotate(680deg); 
-        }
-      }
-      @-webkit-keyframes spin1 {
-        0% {
-        -moz-transform:rotate(320deg);
-        -webkit-transform:rotate(320deg);
-        -o-transform:rotate(320deg);
-        -ms-transform:rotate(320deg);
-        }
-        100% {
-        -moz-transform:rotate(680deg);
-        -webkit-transform:rotate(680deg);
-        -o-transform:rotate(680deg);
-        -ms-transform:rotate(680deg); 
-        }
-      }
-      @keyframes spin2 {
-        0% {
-        -moz-transform:rotate(80deg);
-        -webkit-transform:rotate(80deg);
-        -o-transform:rotate(80deg);
-        -ms-transform:rotate(80deg);
-        }
-        100% {
-        -moz-transform:rotate(440deg);
-        -webkit-transform:rotate(440deg);
-        -o-transform:rotate(440deg);
-        -ms-transform:rotate(440deg); 
-        }
-      }
-      @-webkit-keyframes spin2 {
-        0% {
-        -moz-transform:rotate(80deg);
-        -webkit-transform:rotate(80deg);
-        -o-transform:rotate(80deg);
-        -ms-transform:rotate(80deg);
-        }
-        100% {
-        -moz-transform:rotate(440deg);
-        -webkit-transform:rotate(440deg);
-        -o-transform:rotate(440deg);
-        -ms-transform:rotate(440deg); 
-        }
-      }
-      @keyframes spin3 {
-        0% {
-        -moz-transform:rotate(200deg);
-        -webkit-transform:rotate(200deg);
-        -o-transform:rotate(200deg);
-        -ms-transform:rotate(200deg);
-        }
-        100% {
-        -moz-transform:rotate(560deg);
-        -webkit-transform:rotate(560deg);
-        -o-transform:rotate(560deg);
-        -ms-transform:rotate(560deg); 
-        }
-      }
-      @-webkit-keyframes spin3 {
-        0% {
-        -moz-transform:rotate(200deg);
-        -webkit-transform:rotate(200deg);
-        -o-transform:rotate(200deg);
-        -ms-transform:rotate(200deg);
-        }
-        100% {
-        -moz-transform:rotate(560deg);
-        -webkit-transform:rotate(560deg);
-        -o-transform:rotate(560deg);
-        -ms-transform:rotate(560deg); 
-        }
-      }
-      /* Spinner Wheel Animation Ends Here */
-
 /* The Sliding Text */
       /* Make it a marquee */
 .marquee {
@@ -203,7 +52,7 @@
   overflow: hidden;
   white-space: nowrap;
   box-sizing: border-box;
-  animation: marquee 10s linear infinite;
+  animation: marquee 15s linear infinite;
 }
 
 .marquee:hover {
@@ -214,4 +63,16 @@
 @keyframes marquee {
   0%   { text-indent: 27.5em }
   100% { text-indent: -50em }
+}
+
+/* Toggle Button */
+.toggle-off {
+display: none !important;
+}
+
+.badge {
+  line-height: normal !important;
+}
+.list-group-item {
+  padding: 0.45rem 0.75rem;
 }

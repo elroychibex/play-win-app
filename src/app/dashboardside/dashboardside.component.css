@@ -55,19 +55,19 @@
 
 /* Styling for the choosing of cards */
 .img1 {
-   background: #F0E9A9;
+   background: #fdef72;
    cursor: pointer;
 }
 .img2 {
-   background: #66E8D8;
+   background: #45f6e2;
    cursor: pointer;
 }
 .img3 {
-   background: #AEF7CE;
+   background: #51ff9c;
    cursor: pointer;
 }
 .img4 {
-   background: #F9B5B5;
+   background: #ff8484;
    cursor: pointer;
 }
 
