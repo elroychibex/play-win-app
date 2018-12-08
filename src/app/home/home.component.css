@@ -8,7 +8,7 @@
     width: 80px;
     height: 80px;
     margin: -280px 40px 54px -34px;    
-    background:url("../../assets/dice.png") no-repeat;    
+    background:url("../../assets/favicon.png") no-repeat;    
     -webkit-animation: falling 5s infinite linear;
     -moz-animation: falling 5s infinite linear;
     }
@@ -75,4 +75,10 @@ display: none !important;
 }
 .list-group-item {
   padding: 0.45rem 0.75rem;
+}
+.list {
+  margin: auto;
+  height: 285px;
+  width: 100%;
+  overflow-y: scroll; /* This changed */
 }
