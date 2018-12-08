@@ -23,12 +23,18 @@
     </nav>
     <!-- Page Content -->
     <div id="content">
-        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <nav class="navbar navbar-expand-lg navbar-light bg-warning">
             <div class="container-fluid">
-                <button type="button" id="sidebarCollapse" class="btn btn-info">
+                <button type="button" id="sidebarCollapse" class="btn btn-danger">
                     <i class="fas fa-ellipsis-v"></i>
                 </button>
-                 <button class="btn btn-info d-inline-block d-lg-none ml-auto" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <!-- Flying Text -->
+                <ul class="navbar-nav mr-auto marquee">
+                    <li class="nav-item active">
+                    <h3 class="d-inline">Making Instant Millionaires!!</h3>            
+                   </li>          
+                 </ul>
+                 <button class="btn btn-danger d-inline-block d-lg-none ml-auto" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <i class="fas fa-align-justify"></i>
                 </button>
 
@@ -44,7 +50,7 @@
                             <a class="nav-link" href="#">Page</a>
                         </li>-->
                         <li class="nav-item">
-                                <button class="btn btn-sm btn-outline-info" routerLink="/">Log Out</button>
+                                <button class="btn btn-sm btn-danger text-white" routerLink="/">Log Out</button>
                         </li> 
                     </ul>
                 </div>

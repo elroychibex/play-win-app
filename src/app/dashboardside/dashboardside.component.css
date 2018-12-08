@@ -52,6 +52,20 @@
    }
 }
 
+/* The Sliding Text */
+      /* Make it a marquee */
+      .marquee {
+         width: 350px;
+         margin: 0 auto;
+         overflow: hidden;
+         white-space: nowrap;
+         box-sizing: border-box;
+         animation: marquee 15s linear infinite;
+       }
+       
+       .marquee:hover {
+         animation-play-state: paused
+       }
 
 /* Styling for the choosing of cards */
 .img1 {
@@ -89,8 +103,8 @@
    flex-direction: column;
    align-items: center;
    justify-content: center;
-   background: #dfdfdf;
-   border: 1px solid #f5f397;
+   background: #dddddd;
+   border: 5px solid #d86f54;
    width: 100%;
 }
 
