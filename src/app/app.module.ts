@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import { NgxSpinnerModule } from 'ngx-spinner';
 
 
 import { AppRoutingModule } from './app-routing.module';
@@ -36,6 +37,7 @@ import { AlertsModule } from 'angular-alert-module';
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
+    NgxSpinnerModule,
     AlertsModule.forRoot(),
     NgbModule.forRoot()
   ],

@@ -5,6 +5,7 @@ import { typeWithParameters } from '@angular/compiler/src/render3/util';
 import { CrudService } from '../services/crud.service';
 import { Router } from '@angular/router';
 import { AlertsService } from 'angular-alert-module';
+import { NgxSpinnerService } from 'ngx-spinner';
 
 @Component({
   selector: 'app-home',
@@ -16,28 +17,23 @@ export class HomeComponent implements OnInit {
   registerForm: FormGroup;
   submitted = false;
   message;
+  msg;
+  numbers = 1000100101;
   loginForm: FormGroup;
   constructor(private modalService: NgbModal, private formBuilder: FormBuilder,
-    private crudService: CrudService, private router: Router, private alerts: AlertsService) { }
-  /**
-   *  {
-        "accountNumber": "09554533",
-   		"dateOfBirth":"1992-12-08",
-        "address": "Abuja",
-        "bankName": "GT",
-        "email": "kingbarr@yahoo.com",
-        "firstname": "aderson",
-        "hobby": "novice",
-        "isActivated": false,
-        "isSuspended": false,
-        "lastname": "joe",
-        "password": "pass",
-  		 "id":0
-    }
-   */
+    private crudService: CrudService, private router: Router, private alerts: AlertsService,
+    public spinner: NgxSpinnerService) { }
 
   ngOnInit() {
     console.log(1);
+
+     /** spinner starts on init */
+     this.spinner.show();
+     setTimeout(() => {
+         /** spinner ends after 5 seconds */
+         this.spinner.hide();
+     }, 5000);
+
     this.registerForm = this.formBuilder.group({
       firstname: ['', Validators.required],
       lastname: ['', Validators.required],
@@ -87,9 +83,56 @@ export class HomeComponent implements OnInit {
 
   onSubmit() {
     this.submitted = true;
+    console.log('submitted');
 
     // stop here if form is invalid
     if (this.registerForm.invalid) {
+      if (this.f.firstname.invalid) {
+        this.message = 'Invalid firstname, Fields mark with * are compulsory';
+        this.msg = 'invalid-feedback';
+        return;
+      }
+      if (this.f.lastname.invalid) {
+        this.message = 'Invalid lastname, Fields mark with * are compulsory';
+        this.msg = 'invalid-feedback';
+        return;
+      }
+      if (this.f.email.invalid) {
+        this.message = 'Invalid Email, Fields mark with * are compulsory';
+        this.msg = 'invalid-feedback';
+        return;
+      }
+      if (this.f.accountNumber.invalid) {
+        this.message = 'Invalid account number, Fields mark with * are compulsory';
+        this.msg = 'invalid-feedback';
+        return;
+      }
+      if (this.f.hobby.invalid) {
+        this.message = 'Invalid hobby, Fields mark with * are compulsory';
+        this.msg = 'invalid-feedback';
+        return;
+      }
+      if (this.f.dateOfBirth.invalid) {
+        this.message = 'Invalid date of birth, must be at least 18 , Fields mark with * are compulsory';
+        this.msg = 'invalid-feedback';
+        return;
+      }
+      if (this.f.address.invalid) {
+        this.message = 'Invalid address, Fields mark with * are compulsory';
+        this.msg = 'invalid-feedback';
+        return;
+      }
+      if (this.f.bankName.invalid) {
+        this.message = 'Invalid bank name, Fields mark with * are compulsory';
+        this.msg = 'invalid-feedback';
+        return;
+      }
+      if (this.f.password.invalid) {
+        this.message = 'Invalid password, must be at least 6 character, Fields mark with * are compulsory';
+        this.msg = 'invalid-feedback';
+        return;
+      }
+
       return;
     }
     console.log(this.f.dateOfBirth.value);
@@ -98,6 +141,7 @@ export class HomeComponent implements OnInit {
     const age = d.getFullYear() - dob;
     if (age < 18) {
       console.log('age cant be 18');
+      this.message = 'User must be atleast 18 years old';
       this.alerts.setMessage('User must be atleast 18 years old', 'error');
       return;
     }
