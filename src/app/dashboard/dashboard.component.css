@@ -30,6 +30,43 @@ a:focus {
 }
 
 /* ---------------------------------------------------
+    HEADER STYLE
+----------------------------------------------------- */
+.marquee {
+    height: 25px;
+    width: 250px;  
+    overflow: hidden;
+    position: relative;
+  }
+  
+  .marquee h3 {
+    display: block;
+    width: 200%;
+    height: 60px;
+    margin-left: 45%;  
+    position: absolute;
+    overflow: hidden;  
+    animation: marquee 5s linear infinite;
+  }
+  
+  @keyframes marquee {
+    0% { left: 0; }
+    100% { left: -100%; }
+  }
+/* .marquee {
+    width: 500px;
+    margin: 0 auto;
+    overflow: hidden;
+    white-space: nowrap;
+    box-sizing: border-box;
+    animation: marquee 15s linear infinite;
+  }
+  
+  .marquee:hover {
+    animation-play-state: paused
+  } */
+
+/* ---------------------------------------------------
     SIDEBAR STYLE
 ----------------------------------------------------- */
 
@@ -44,7 +81,7 @@ a:focus {
     top: 0;
     left: 0; */
     /* z-index: 1; */
-    background:  #37DCE7;
+    background:  #ffc107;
     transition: all 0.5s;
 }
 
@@ -55,7 +92,7 @@ a:focus {
 
 #sidebar .sidebar-header {
     padding: 20px;
-    background:  #91f3fa;
+    background:  #f5b800;
 }
 
 #sidebar ul.components {
@@ -76,7 +113,7 @@ a:focus {
 #sidebar ul li a:hover {
     padding: 2%;
     margin: 0 5%;
-    color: #47748b;
+    color: #e7584b;
     /* background: #fff; */
     border: 3px solid #ce9e10;
 }
