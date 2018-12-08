@@ -17,8 +17,8 @@ export class HomeComponent implements OnInit {
   submitted = false;
   message;
   loginForm: FormGroup;
-  constructor(private modalService: NgbModal, private formBuilder: FormBuilder, 
-    private crudService: CrudService, private router: Router,private alerts: AlertsService) { }
+  constructor(private modalService: NgbModal, private formBuilder: FormBuilder,
+    private crudService: CrudService, private router: Router, private alerts: AlertsService) { }
   /**
    *  {
         "accountNumber": "09554533",
@@ -57,8 +57,8 @@ export class HomeComponent implements OnInit {
       username: ['', Validators.required, Validators.email],
       password: ['', Validators.required]
     });
-  ngOnInit () {
-    let a = document.querySelector('.toggle-off');
+
+    const a = document.querySelector('.toggle-off');
     setInterval(() => {
       a.classList.toggle('toggle-off');
     }, 8000);
@@ -98,7 +98,7 @@ export class HomeComponent implements OnInit {
     const age = d.getFullYear() - dob;
     if (age < 18) {
       console.log('age cant be 18');
-      this.alerts.setMessage('User must be atleast 18 years old','error');
+      this.alerts.setMessage('User must be atleast 18 years old', 'error');
       return;
     }
     const data = this.registerForm.value;
@@ -114,7 +114,7 @@ export class HomeComponent implements OnInit {
           this.message = 'Email already exist, please Login';
         } else if (stat === 1) {
           this.message = 'Successful, Confirmation Link Has Been Sent to Your Email';
-          this.alerts.setMessage('Successful Registration','success');
+          this.alerts.setMessage('Successful Registration', 'success');
         }
 
       });
@@ -127,12 +127,12 @@ export class HomeComponent implements OnInit {
         localStorage.setItem('username', response.username);
         this.router.navigate(['/home']);
         console.log(response);
-     
+
       },
         (err) => {
           console.log(err);
-       //   this.isLoginError = true;
-       this.alerts.setMessage('Invalid username or password','error');
+          //   this.isLoginError = true;
+          this.alerts.setMessage('Invalid username or password', 'error');
         });
   }
 

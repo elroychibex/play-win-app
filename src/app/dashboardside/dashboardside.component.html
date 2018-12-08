@@ -19,7 +19,7 @@
         <label class="labl img1">
           <input type="radio" name="radioname" value="one_value" checked="checked" />
           <div><img src="../../assets/rich.svg" class="py-2" width="40px">
-            <p>123456</p>
+            <div id="odometer1" class="odometer">1000000001</div>
           </div>
         </label>
       </div>
@@ -27,7 +27,9 @@
         <label class="labl img2">
           <input type="radio" name="radioname" value="another" />
           <div> <img src="../../assets/change.svg" class="py-2" width="40px">
-            <p>123456</p>
+            
+              <div id="odometer2" class="odometer">1000000001</div>
+            
           </div>
         </label>
       </div>
@@ -35,7 +37,7 @@
         <label class="labl img3">
           <input type="radio" name="radioname" value="another" />
           <div><img src="../../assets/coin.svg" class="py-2" width="40px">
-            <p>123456</p>
+            <div id="odometer3" class="odometer">1000000001</div>
           </div>
         </label>
       </div>
@@ -43,7 +45,7 @@
         <label class="labl img4">
           <input type="radio" name="radioname" value="another" />
           <div> <img src="../../assets/coins.svg" class="py-2" width="40px">
-            <p>123456</p>
+            <div id="odometer4" class="odometer">1000000001</div>
           </div>
         </label>
       </div>
@@ -55,20 +57,11 @@
          <!-- <div class=" m-2 p-2 odometer">1234567</div> -->
         
           <!-- Counter 2 -->
-        <div id="counter" class="animated">
-          <ul class="digits digits-first luckie">
-            <li> 0 <li> 1 <li> 2 <li> 3 <li> 4 <li> 5 <li> 6 <li> 7 <li> 8 <li> 9
-          </ul>
-          <ul class="digits digits-second luckie">
-            <li> 0 <li> 1 <li> 2 <li> 3 <li> 4 <li> 5 <li> 6 <li> 7 <li> 8 <li> 9
-          </ul>
-          <ul class="digits digits-third luckie">
-            <li> 0 <li> 1 <li> 2 <li> 3 <li> 4 <li> 5 <li> 6 <li> 7 <li> 8 <li> 9
-          </ul>
-        </div>
+       
 
       </div>
     </div>
     <button type="submit" class="btn btn-lg btn-warning px-4 my-3">PLAY</button>
   </form>
 </div>
+<script  src="./odometer/odometer.js" ></script>
