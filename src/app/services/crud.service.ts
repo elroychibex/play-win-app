@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
-import {map} from 'rxjs/operators';
+import { map } from 'rxjs/operators';
 import { Observable } from 'rxjs';
-import { HttpHeaders, HttpClient, HttpEventType,  } from '@angular/common/http';
+import { HttpHeaders, HttpClient, HttpEventType, } from '@angular/common/http';
 import { Headers, RequestOptions } from '@angular/http';
 @Injectable({
   providedIn: 'root'
@@ -12,9 +12,9 @@ export class CrudService {
   URLL;
   naira = '&#8358;';
   emp_msg = {};
-   headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+  headers = new HttpHeaders({ 'Content-Type': 'application/json' });
   //  options = new RequestOptions({ headers: headers });
-  
+
   header = new HttpHeaders(
     {
       'Accept': 'application/json',
@@ -22,7 +22,13 @@ export class CrudService {
     }
   );
 
-  
+  headerAuth = new HttpHeaders(
+    {
+      'Authorization': btoa(unescape(encodeURIComponent(localStorage.getItem('token'))))
+    }
+  );
+
+
 
   /**
    * Log the user in http://localhost:8080/RebirthERP/api
@@ -30,11 +36,12 @@ export class CrudService {
    * @param password of the user
    */
   login(username: string, password: string) {
-  //  const token = this.http.post('http://env-5029635.atl.jelastic.vps-host.net/api/login',
-   const token = this.http.post(this.REST_API_URL + 'login',
-      'username=' + username + '&password=' + password, { headers: this.header });
-      console.log()
-      return token;
+    //  const token = this.http.post('http://env-5029635.atl.jelastic.vps-host.net/api/login',
+    return this.http.post(this.REST_API_URL + 'login',
+      'username=' + username + '&password=' + password, { headers: this.header })
+      .pipe(map(res => res));
+    // console.log()
+    // return token;
   }
 
   /**
@@ -43,12 +50,12 @@ export class CrudService {
   isLoggedIn() {
     const token = localStorage.getItem('token');
     const accessRight = localStorage.getItem('role');
-   // console.log(token);
+    // console.log(token);
     return token != null;
   }
 
   constructor(private http: HttpClient) {
-   this.REST_API_URL = 'http://localhost:8080/OnlineScratchNWin/api/';
+    this.REST_API_URL = 'http://localhost:8080/OnlineScratchNWin/api/';
     this.emp_msg = { message: 'No data available' };
   }
 
@@ -57,7 +64,34 @@ export class CrudService {
    * 
    * @param object the table to get all data
    */
+
+
+
+
   getAll(object) {
+    const obj = new HttpHeaders();
+
+    // obj.append('Authorization', 'Basic ' + btoa(unescape(encodeURIComponent(localStorage.getItem('token')))));
+    //  obj.append('Content-Type', 'Application/json');
+    // let headers = new HttpHeaders();
+    // headers = headers.set('Content-Type', 'application/json; charset=utf-8')
+    //   .set('Authorization', btoa(unescape(encodeURIComponent(localStorage.getItem('token')))));
+
+    // const httpOptions = {
+    //   headers: obj
+    // };
+
+   const auth = localStorage.getItem('token');
+
+
+    // Basic header information
+  const  header = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Accept': 'application/json',
+      'authorization': auth
+    });
+
+    console.log(header);
     return this.http.get(this.REST_API_URL + '' + object)
       .pipe(map(res => res));
   }
@@ -69,20 +103,20 @@ export class CrudService {
    */
   getByID(object, id) {
     return this.http.get(this.REST_API_URL + '' + object + '/' + id)
-    .pipe(map(res => res));
+      .pipe(map(res => res));
   }
 
   getImage(object, id) {
     return this.http.get(this.REST_API_URL + '' + object + '/' + id)
-    .pipe(map(res => res));
+      .pipe(map(res => res));
   }
 
   getByTwoParam(object, id, id2) {
     return this.http.get(this.REST_API_URL + '' + object + '/' + id + '/' + id2)
-    .pipe(map(res => res));
+      .pipe(map(res => res));
   }
 
-  
+
   /**
    * 
    * 
@@ -91,11 +125,11 @@ export class CrudService {
    */
   saveData(object, data, id) {
     if (id === 0) {
-      return this.http.post(this.REST_API_URL + '' + object, data, {headers : this.headers})
-      .pipe(map(res => res));
+      return this.http.post(this.REST_API_URL + '' + object, data, { headers: this.headers })
+        .pipe(map(res => res));
     } else {
       return this.http.put(this.REST_API_URL + '' + object + '', data)
-      .pipe(map(res => res));
+        .pipe(map(res => res));
     }
   }
 
@@ -108,7 +142,7 @@ export class CrudService {
   */
   updateData(object, data) {
     return this.http.put(this.REST_API_URL + object, data)
-    .pipe(map(res => res));
+      .pipe(map(res => res));
   }
 
   /**
@@ -118,7 +152,7 @@ export class CrudService {
    */
   deleteData(object, id) {
     return this.http.delete(this.REST_API_URL + object + '/' + id)
-    .pipe(map(res => res));
+      .pipe(map(res => res));
   }
   /**
    * 
@@ -127,7 +161,7 @@ export class CrudService {
    */
   getNameByID(table, id) {
     return this.http.get(this.REST_API_URL + table + '/' + id)
-    .pipe(map(res => res));
+      .pipe(map(res => res));
   }
 
   // Provide notification after action
@@ -170,7 +204,7 @@ export class CrudService {
       reportProgress: true,
       observe: 'events'
     })
-    .pipe(map(res => res));
+      .pipe(map(res => res));
   }
 
   fileUpload2(selectedFile) {
@@ -183,6 +217,6 @@ export class CrudService {
       reportProgress: true,
       observe: 'events'
     }).
-     pipe(map(data => data));
+      pipe(map(data => data));
   }
 }

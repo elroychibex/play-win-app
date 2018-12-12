@@ -18,6 +18,8 @@ import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { AlertsModule } from 'angular-alert-module';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+// import { AuthInterceptor } from './auth/auth.interceptor';
 
 @NgModule({
   declarations: [
@@ -41,7 +43,13 @@ import { AlertsModule } from 'angular-alert-module';
     AlertsModule.forRoot(),
     NgbModule.forRoot()
   ],
-  providers: [],
+  providers: [
+    // {
+    //   provide: HTTP_INTERCEPTORS,
+    //   useClass: AuthInterceptor,
+    //   multi: true
+    // }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

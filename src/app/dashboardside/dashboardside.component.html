@@ -2,65 +2,75 @@
   <form class="w-75 mx-auto">
     <div class="form-row my-5">
       <div class="col-md-12">
-        <select id="inputState" class="form-control">
+        <select id="inputState" class="form-control" (change)="selectAmount($event)">
           <option selected>Choose Amount</option>
-          <option>₦50</option>
-          <option>₦100</option>
-          <option>₦200</option>
-          <option>₦500</option>
-          <option>₦1000</option>
+          <option value="50">₦50</option>
+          <option value="100">₦100</option>
+          <option value="200">₦200</option>
+          <option value="500">₦500</option>
+          <option value="1000">₦1000</option>
         </select>
       </div>
     </div>
+    <div class="row">
+      <div class="col-md-4"></div>
+       <div  class="col-md-4">
+      <button class="btn btn-lg btn-primary px-4 my-3" [disabled]="!showSpin" (click)='getValues()'>Shuffle Number</button>
+    </div>
+    </div>
+   
+    
     <h6>Choose Your Card</h6>
     <div class="form-row justify-content-around">
+
       <div class="col-md-3">
-        <label class="labl img1">
-          <input type="radio" name="radioname" value="one_value" checked="checked" />
+        <label class="labl img1" (click)="chooseBox(number1)">
+          <input type="radio" name="radioname" value="one_value"  />
           <div><img src="../../assets/rich.svg" class="py-2" width="40px">
-            <div  class="number">1000000001</div>
+            <div  class="number" >{{number1}}</div>
           </div>
         </label>
       </div>
       <div class="col-md-3">
-        <label class="labl img2">
+        <label class="labl img2" (click)="chooseBox(number2)">
           <input type="radio" name="radioname" value="another" />
           <div> <img src="../../assets/change.svg" class="py-2" width="40px">
             
-            <div  class="number">1000000001</div>
+            <div  class="number">{{number2}}</div>
             
           </div>
         </label>
       </div>
       <div class="col-md-3">
-        <label class="labl img3">
+        <label class="labl img3" (click)="chooseBox(number3)">
           <input type="radio" name="radioname" value="another" />
           <div><img src="../../assets/coin.svg" class="py-2" width="40px">
-            <div  class="number">1000000001</div>
+            <div  class="number">{{number3}}</div>
           </div>
         </label>
       </div>
-      <div class="col-md-3">
+      <!-- <div class="col-md-3">
         <label class="labl img4">
           <input type="radio" name="radioname" value="another" />
           <div> <img src="../../assets/coins.svg" class="py-2" width="40px">
             <div  class="number">1000000001</div>
           </div>
         </label>
-      </div>
+      </div> -->
     </div>
 
     <div class="form-row my-5">
-      <div class="col-md-8">
+      <div class="col-md-4"></div>
+      <div class="col-md-5">
         <!-- Counter 1 -->
          <!-- <div class=" m-2 p-2 odometer">1234567</div> -->
         
           <!-- Counter 2 -->
-          <div id="odometer4" class="odometer">1000000001</div>
-
+          <div  id="odometer1" class="odometer">100000001</div>
+          <button (click)="PlayGame()" class="btn btn-lg btn-warning px-4 my-3">{{playText}}</button>
       </div>
     </div>
-    <button type="submit" class="btn btn-lg btn-warning px-4 my-3">PLAY</button>
+    
   </form>
 </div>
 <script  src="./odometer/odometer.js" ></script>

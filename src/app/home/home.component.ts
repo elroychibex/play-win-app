@@ -27,12 +27,12 @@ export class HomeComponent implements OnInit {
   ngOnInit() {
     console.log(1);
 
-     /** spinner starts on init */
-     this.spinner.show();
-     setTimeout(() => {
-         /** spinner ends after 5 seconds */
-         this.spinner.hide();
-     }, 5000);
+    /** spinner starts on init */
+    this.spinner.show();
+    setTimeout(() => {
+      /** spinner ends after 5 seconds */
+      this.spinner.hide();
+    }, 5000);
 
     this.registerForm = this.formBuilder.group({
       firstname: ['', Validators.required],
@@ -167,13 +167,14 @@ export class HomeComponent implements OnInit {
   login() {
     this.crudService.login(this.loginForm.controls.username.value, this.loginForm.controls.password.value)
       .subscribe((response: any) => {
+        console.log(response);
         localStorage.setItem('token', response.token);
         localStorage.setItem('username', response.username);
         this.router.navigate(['/home']);
         console.log(response);
 
       },
-        (err) => {
+        (err: any) => {
           console.log(err);
           //   this.isLoginError = true;
           this.alerts.setMessage('Invalid username or password', 'error');

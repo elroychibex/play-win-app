@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import * as $ from 'jquery';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
@@ -7,7 +8,7 @@ import * as $ from 'jquery';
 })
 export class DashboardComponent implements OnInit {
 
-  constructor() { }
+  constructor(private route: Router) { }
 
   ngOnInit() {
   }
@@ -22,5 +23,11 @@ export class DashboardComponent implements OnInit {
       // in our CSS
       $('a[aria-expanded=true]').attr('aria-expanded', 'false');
   });
+}
+loggout(){
+  localStorage.removeItem('token');
+  localStorage.removeItem('username');
+localStorage.clear();
+//this.route.navigate('/');
 }
 }
