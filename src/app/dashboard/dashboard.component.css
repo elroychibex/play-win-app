@@ -9,11 +9,11 @@ a:focus {
 }
 
 .navbar {
-    padding: 15px 10px;
+    padding: 3% 0;
     background: #fff;
     border: none;
     border-radius: 0;
-    margin-bottom: 40px;
+    margin-bottom: 2%;
     box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
 }
 
@@ -33,7 +33,7 @@ a:focus {
     HEADER STYLE
 ----------------------------------------------------- */
 .marquee {
-    height: 25px;
+    height: 50px;
     width: 250px;  
     overflow: hidden;
     position: relative;
@@ -41,7 +41,7 @@ a:focus {
   
   .marquee h3 {
     display: block;
-    width: 200%;
+    width: 700px;
     height: 80px;
     margin-left: 45%;  
     position: absolute;
@@ -106,8 +106,10 @@ a:focus {
 
 #sidebar ul li a {
     padding: 10px;
-    font-size: 1.1em;
+    font-size: 1.3em;
+    font-weight: 900;
     display: block;
+    color: #145d14;
 }
 
 #sidebar ul li a:hover {

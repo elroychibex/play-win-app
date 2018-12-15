@@ -15,3 +15,11 @@ p {
   font-size: 1em; 
 
 } /* 16px */
+
+.bg {
+  background: linear-gradient(180deg, #ffffffe3 0%, rgba(255, 255, 255, 0.89) 99.99%, rgba(255, 255, 255, 0) 100%), url(./assets/scratchnwinbg.png);
+}
+
+a {
+  color: #dc3545;
+}
