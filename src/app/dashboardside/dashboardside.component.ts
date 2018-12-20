@@ -30,7 +30,7 @@ export class DashboardsideComponent implements OnInit {
   ngOnInit() {
     const win = window;
     this.isPlayed = false;
-    this.playText='PLAY';
+    this.playText = 'PLAY';
 
     // win.odo = {
     //    auto: false, // Don't automatically initialize everything with class 'odometer'
@@ -85,7 +85,6 @@ export class DashboardsideComponent implements OnInit {
       this.playMeter();
     } else {
       this.ngOnInit();
-    
     }
   }
 
@@ -147,7 +146,6 @@ export class DashboardsideComponent implements OnInit {
                  d.playNoWinAudio();
                 } else {
                   Swal(e.message, 'whaoooo');
-                  
                   d.playWinAudio();
                 }
               }, 5000);
