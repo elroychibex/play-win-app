@@ -73,8 +73,10 @@ display: none !important;
 .badge {
   line-height: normal !important;
 }
+
+/* Styling for the Winners List */
 .list-group-item {
-  padding: 0.45rem 0.75rem;
+  padding: 0.75rem 1.2rem;
 }
 .list {
   margin: auto;
@@ -82,3 +84,69 @@ display: none !important;
   width: 100%;
   overflow-y: scroll; /* This changed */
 }
+
+/* ul {
+  width: 300px;
+  position: absolute;
+  left: 50%;
+  margin-top: 25px;
+  margin-left: -150px;
+} */
+
+li {
+  /* position: relative;
+  display: block;
+  border: 1px solid hotpink; */
+  margin-bottom: 5px;
+  padding: 5%;
+  /* text-align: center; */
+  -webkit-animation: fadeIn 0.5s linear;
+          animation: fadeIn 0.5s linear;
+  -webkit-animation-fill-mode: both;
+          animation-fill-mode: both;
+}
+
+li:nth-child(1) {
+  -webkit-animation-delay: 4s;
+          animation-delay: 4s;
+}
+
+li:nth-child(2) {
+  -webkit-animation-delay: 7s;
+          animation-delay: 7s;
+}
+
+li:nth-child(3) {
+  -webkit-animation-delay: 10s;
+          animation-delay: 10s;
+}
+
+li:nth-child(4) {
+  -webkit-animation-delay: 13s;
+          animation-delay: 13s;
+}
+
+li:nth-child(5) {
+  -webkit-animation-delay: 16s;
+          animation-delay: 16s;
+}
+
+li:nth-child(6) {
+  -webkit-animation-delay: 19s;
+          animation-delay: 19s;
+}
+
+@-webkit-keyframes fadeIn {
+  0% {
+    opacity: 0;
+    top: 100px;
+  }
+  75% {
+    opacity: 0.5;
+    top: 0px;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
