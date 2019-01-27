@@ -19,6 +19,8 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { AlertsModule } from 'angular-alert-module';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { Angular4PaystackModule } from 'angular4-paystack';
+
 // import { AuthInterceptor } from './auth/auth.interceptor';
 
 @NgModule({
@@ -40,6 +42,7 @@ import { HTTP_INTERCEPTORS } from '@angular/common/http';
     ReactiveFormsModule,
     HttpClientModule,
     NgxSpinnerModule,
+    Angular4PaystackModule,
     AlertsModule.forRoot(),
     NgbModule.forRoot()
   ],

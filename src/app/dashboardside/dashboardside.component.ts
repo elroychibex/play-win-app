@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { CrudService } from '../services/crud.service';
 import { NgxSpinnerService } from 'ngx-spinner';
-// import { odometerOptions } from './odometer/odometer';
+import { odometerOptions } from './odometer/odometer';
 import Swal from 'sweetalert2';
+import { Location } from '@angular/common';
+import { Router, NavigationEnd } from '@angular/router';
 
 declare var window: any;
 
@@ -13,9 +15,11 @@ declare var window: any;
   styleUrls: ['./dashboardside.component.css', './odometer/odometer-theme-slot-machine.css']
 })
 export class DashboardsideComponent implements OnInit {
-  number1 = 1000100001;
-  number2 = 1000100001;
-  number3 = 1000100001;
+  number1;
+  number2;
+  number3;
+  number4;
+  number5;
   amount;
   selectedNumber = 0;
   showSpin = false;
@@ -25,22 +29,40 @@ export class DashboardsideComponent implements OnInit {
 
 
 
-  constructor(private crudService: CrudService, private spinner: NgxSpinnerService) { }
+  constructor(private crudService: CrudService, private spinner: NgxSpinnerService, private location: Location, private router: Router) {
+
+    this.router.routeReuseStrategy.shouldReuseRoute = function () {
+      return false;
+    };
+
+    this.router.events.subscribe((evt) => {
+      if (evt instanceof NavigationEnd) {
+        this.router.navigated = false;
+      }
+    });
+  }
 
   ngOnInit() {
     const win = window;
-    this.isPlayed = false;
+    this.number1 = 1000100001;
+    this.number2 = 1000100001;
+    this.number3 = 1000100001;
+    this.number4 = 1000100001;
+    this.selectedNumber = 0;
+    this.showSpin = false;
+    this.showMeter = false;
     this.playText = 'PLAY';
+    this.isPlayed = false;
 
-    // win.odo = {
-    //    auto: false, // Don't automatically initialize everything with class 'odometer'
-    //   //   selector: '.my-numbers', // Change the selector used to automatically find things to be animated
-    //   format: '(,ddd).dd', // Change how digit groups are formatted, and how many digits are shown after the decimal point
-    //   duration: 6000, // Change how long the javascript expects the CSS animation to take
-    //  // theme: 'car', // Specify the theme (if you have more than one theme css file on the page)
-    //   animation: 'count' // Count is a simpler animation method which just increments the value,
-    //   // use it when you're looking for something more subtle.
-    // };
+    win.odometerOptions = {
+      auto: false, // Don't automatically initialize everything with class 'odometer'
+      //   selector: '.my-numbers', // Change the selector used to automatically find things to be animated
+      format: '(,ddd).dd', // Change how digit groups are formatted, and how many digits are shown after the decimal point
+      duration: 6000, // Change how long the javascript expects the CSS animation to take
+      // theme: 'car', // Specify the theme (if you have more than one theme css file on the page)
+      animation: 'count' // Count is a simpler animation method which just increments the value,
+      // use it when you're looking for something more subtle.
+    };
 
   }
 
@@ -52,17 +74,23 @@ export class DashboardsideComponent implements OnInit {
 
   getValues() {
     this.spinner.show();
-    this.crudService.getAll('userplays/getplaydigits/' + localStorage.getItem('username'))
+    this.crudService.getAll('userplays/getplaydigits/' + localStorage.getItem('token'))
       .subscribe((e: any) => {
         console.log(e);
         setTimeout(() => {
           this.number1 = e.number1;
           this.number2 = e.number2;
           this.number3 = e.number3;
+          this.number4 = e.number4;
           /** spinner ends after 5 seconds */
           this.spinner.hide();
-        }, 5000);
-      });
+        }, 3000);
+      },
+        error => {
+
+          this.spinner.hide();
+          Swal('Oops...', 'Sorry error occured, or unauthorize user', 'error');
+        });
   }
   // playMeter() {
   //   // this.showMeter = true;
@@ -81,7 +109,7 @@ export class DashboardsideComponent implements OnInit {
   }
 
   PlayGame() {
-    if (!this.isPlayed) {
+    if (this.playText !== 'PLAY AGAIN') {
       this.playMeter();
     } else {
       this.ngOnInit();
@@ -110,7 +138,7 @@ export class DashboardsideComponent implements OnInit {
 
   playMeter() {
     if (this.selectedNumber !== 0) {
-
+      if(this.selectedNumber !==1000100001){
 
       Swal({
         title: 'Ready to play?',
@@ -125,7 +153,7 @@ export class DashboardsideComponent implements OnInit {
           const playParam = {
             'amount': this.amount,
             'number': this.selectedNumber,
-            'player': localStorage.getItem('username')
+            'player': localStorage.getItem('token')
           };
           console.log(playParam);
           this.playSlotAudio();
@@ -141,12 +169,12 @@ export class DashboardsideComponent implements OnInit {
               }, 3000);
 
               setTimeout(function () {
-                if (e.code === 1) {
-                  Swal(e.message, 'Please try again');
-                 d.playNoWinAudio();
-                } else {
-                  Swal(e.message, 'whaoooo');
+                if (e.code === 0) {
+                  Swal(e.message, 'Whaooooo');
                   d.playWinAudio();
+                } else {
+                  Swal(e.message, 'Please try again');
+                  d.playNoWinAudio();
                 }
               }, 5000);
 
@@ -162,6 +190,10 @@ export class DashboardsideComponent implements OnInit {
         }
         this.playText = 'PLAY AGAIN';
       });
+
+    } else{
+      Swal('Oops...', 'Please reshuffle cards', 'error');
+    }
     } else {
       Swal('Oops...', 'Please select card first', 'error');
     }

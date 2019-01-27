@@ -1,23 +1,35 @@
 import { Component, OnInit } from '@angular/core';
-import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
+import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
+import { CrudService } from '../services/crud.service';
+import { NgxSoapService, Client, ISoapMethodResponse } from 'ngx-soap';
 
 @Component({
   selector: 'app-accounts',
   templateUrl: './accounts.component.html',
   styleUrls: ['./accounts.component.css']
 })
-export class AccountsComponent {
-  closeResult: string;
+export class AccountsComponent implements OnInit {
+  closeResult;
+  balance;
+  client: Client;
+  message;
 
-  constructor(private modalService: NgbModal) {}
+  constructor(private modalService: NgbModal, private crudService: CrudService) {
+
+  }
 
   open(content) {
-    this.modalService.open(content, {ariaLabelledBy: 'modal-basic-title'}).result.then((result) => {
+    this.modalService.open(content, { ariaLabelledBy: 'modal-basic-title' }).result.then((result) => {
       this.closeResult = `Closed with: ${result}`;
     }, (reason) => {
       this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
     });
   }
+
+  ngOnInit() {
+    this.callBal();
+  }
+
 
   private getDismissReason(reason: any): string {
     if (reason === ModalDismissReasons.ESC) {
@@ -25,7 +37,19 @@ export class AccountsComponent {
     } else if (reason === ModalDismissReasons.BACKDROP_CLICK) {
       return 'by clicking on a backdrop';
     } else {
-      return  `with: ${reason}`;
+      return `with: ${reason}`;
     }
+  }
+
+  callBal() {
+    this.crudService.getByID('userplays/useraccount', localStorage.getItem('token'))
+      .subscribe((e: any) => {
+        this.balance = e.balance;
+        console.log(e);
+      });
+  }
+
+  createTransaction(){
+    
   }
 }

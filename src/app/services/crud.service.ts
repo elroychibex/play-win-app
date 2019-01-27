@@ -81,20 +81,44 @@ export class CrudService {
     //   headers: obj
     // };
 
-   const auth = localStorage.getItem('token');
+    const auth = localStorage.getItem('token');
 
 
     // Basic header information
-  const  header = new HttpHeaders({
+    const header = new HttpHeaders({
       'Content-Type': 'application/json',
       'Accept': 'application/json',
-      'authorization': auth
+      'Authorization': auth
     });
 
     console.log(header);
     return this.http.get(this.REST_API_URL + '' + object)
       .pipe(map(res => res));
   }
+
+
+  PostData(path, data) {
+    return new Promise((resolve, reject) => {
+      this.http.post(this.REST_API_URL + '' + path, data, { headers: this.header })
+        .subscribe((e: any) => {
+          resolve(e);
+        }, error => {
+          reject(error);
+        });
+    });
+  }
+
+  findData(path: string) {
+    return new Promise((resolve, reject) => {
+      this.http.get(path, { headers: this.header })
+        .subscribe((e: any) => {
+          resolve(e);
+        }, error => {
+          reject(error);
+        });
+    });
+  }
+
 
   /**
    * 
@@ -219,4 +243,16 @@ export class CrudService {
     }).
       pipe(map(data => data));
   }
+
+  findPromise(object: string) {
+    return new Promise((resolve, reject) => {
+      this.getByID(object, localStorage.getItem('token'))
+        .subscribe((e: any) => {
+          resolve(e);
+        }, error => {
+          reject(error);
+        });
+    });
+  }
+
 }
