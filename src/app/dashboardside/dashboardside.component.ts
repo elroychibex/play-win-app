@@ -43,26 +43,29 @@ export class DashboardsideComponent implements OnInit {
   }
 
   ngOnInit() {
-    const win = window;
-    this.number1 = 1000100001;
-    this.number2 = 1000100001;
-    this.number3 = 1000100001;
-    this.number4 = 1000100001;
-    this.selectedNumber = 0;
-    this.showSpin = false;
-    this.showMeter = false;
-    this.playText = 'PLAY';
-    this.isPlayed = false;
+    setTimeout(function () {
+      const win = window;
+      this.number1 = 1000100001;
+      this.number2 = 1000100001;
+      this.number3 = 1000100001;
+      this.number4 = 1000100001;
+      this.selectedNumber = 0;
+      this.showSpin = false;
+      this.showMeter = false;
+      this.playText = 'PLAY';
+      this.isPlayed = false;
 
-    win.odometerOptions = {
-      auto: false, // Don't automatically initialize everything with class 'odometer'
-      //   selector: '.my-numbers', // Change the selector used to automatically find things to be animated
-      format: '(,ddd).dd', // Change how digit groups are formatted, and how many digits are shown after the decimal point
-      duration: 6000, // Change how long the javascript expects the CSS animation to take
-      // theme: 'car', // Specify the theme (if you have more than one theme css file on the page)
-      animation: 'count' // Count is a simpler animation method which just increments the value,
-      // use it when you're looking for something more subtle.
-    };
+      win.odometerOptions = {
+        auto: false, // Don't automatically initialize everything with class 'odometer'
+        //   selector: '.my-numbers', // Change the selector used to automatically find things to be animated
+        format: '(,ddd).dd', // Change how digit groups are formatted, and how many digits are shown after the decimal point
+        duration: 6000, // Change how long the javascript expects the CSS animation to take
+        // theme: 'car', // Specify the theme (if you have more than one theme css file on the page)
+        animation: 'count' // Count is a simpler animation method which just increments the value,
+        // use it when you're looking for something more subtle.
+      };
+    }, 2000);
+
 
   }
 
@@ -74,8 +77,8 @@ export class DashboardsideComponent implements OnInit {
 
   getValues() {
     this.spinner.show();
-    this.crudService.getAll('userplays/getplaydigits/' + localStorage.getItem('token'))
-      .subscribe((e: any) => {
+    this.crudService.findData('userplays/getplaydigits')
+      .then((e: any) => {
         console.log(e);
         setTimeout(() => {
           this.number1 = e.number1;
@@ -138,62 +141,62 @@ export class DashboardsideComponent implements OnInit {
 
   playMeter() {
     if (this.selectedNumber !== 0) {
-      if(this.selectedNumber !==1000100001){
+      if (this.selectedNumber !== 1000100001) {
 
-      Swal({
-        title: 'Ready to play?',
-        text: 'You selected ' + this.selectedNumber + ' with amount of ' + this.amount,
-        type: 'warning',
-        showCancelButton: true,
-        confirmButtonText: 'Yes, Play',
-        cancelButtonText: 'Nope! not ready'
-      }).then((result) => {
-        this.isPlayed = true;
-        if (result.value) {
-          const playParam = {
-            'amount': this.amount,
-            'number': this.selectedNumber,
-            'player': localStorage.getItem('token')
-          };
-          console.log(playParam);
-          this.playSlotAudio();
+        Swal({
+          title: 'Ready to play?',
+          text: 'You selected ' + this.selectedNumber + ' with amount of ' + this.amount,
+          type: 'warning',
+          showCancelButton: true,
+          confirmButtonText: 'Yes, Play',
+          cancelButtonText: 'Nope! not ready'
+        }).then((result) => {
+          this.isPlayed = true;
+          if (result.value) {
+            const playParam = {
+              'amount': this.amount,
+              'number': this.selectedNumber,
+              'player': localStorage.getItem('token')
+            };
+            console.log(playParam);
+            this.playSlotAudio();
 
-          this.crudService.saveData('userplays', playParam, 0)
-            .subscribe((e: any) => {
-              console.log(e);
-              const d = this;
-              setTimeout(function () {
-                const odometer1 = document.getElementById('odometer1');
-                const ser = d.getDisplayNumber(e.code);
-                odometer1.innerHTML = ser + '';
-              }, 3000);
+            this.crudService.PostData('userplays', playParam)
+              .then((e: any) => {
+                console.log(e);
+                const d = this;
+                setTimeout(function () {
+                  const odometer1 = document.getElementById('odometer1');
+                  const ser = d.getDisplayNumber(e.code);
+                  odometer1.innerHTML = ser + '';
+                }, 3000);
 
-              setTimeout(function () {
-                if (e.code === 0) {
-                  Swal(e.message, 'Whaooooo');
-                  d.playWinAudio();
-                } else {
-                  Swal(e.message, 'Please try again');
-                  d.playNoWinAudio();
-                }
-              }, 5000);
-
-
-            });
+                setTimeout(function () {
+                  if (e.code === 0) {
+                    Swal(e.message, 'Whaooooo');
+                    d.playWinAudio();
+                  } else {
+                    Swal(e.message, 'Please try again');
+                    d.playNoWinAudio();
+                  }
+                }, 5000);
 
 
+              });
 
-          // For more information about handling dismissals please visit
-          // https://sweetalert2.github.io/#handling-dismissals
-        } else if (result.dismiss === Swal.DismissReason.cancel) {
 
-        }
-        this.playText = 'PLAY AGAIN';
-      });
 
-    } else{
-      Swal('Oops...', 'Please reshuffle cards', 'error');
-    }
+            // For more information about handling dismissals please visit
+            // https://sweetalert2.github.io/#handling-dismissals
+          } else if (result.dismiss === Swal.DismissReason.cancel) {
+
+          }
+          this.playText = 'PLAY AGAIN';
+        });
+
+      } else {
+        Swal('Oops...', 'Please reshuffle cards', 'error');
+      }
     } else {
       Swal('Oops...', 'Please select card first', 'error');
     }

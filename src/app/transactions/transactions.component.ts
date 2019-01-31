@@ -18,8 +18,8 @@ export class TransactionsComponent implements OnInit {
   }
 
   findGamePlayed() {
-    this.crudService.getByID('userplays/gameplayed', localStorage.getItem('token'))
-      .subscribe((e: any) => {
+    this.crudService.findData('userplays/alluserplay')
+      .then((e: any) => {
         e.forEach(elem => {
           this.gamePlayed.push({
             'serial': elem.serial, 'date': elem.date, 'amount': elem.amount,
@@ -30,8 +30,8 @@ export class TransactionsComponent implements OnInit {
   }
 
   findTransactions() {
-    this.crudService.getByID('userplays/usertransaction', localStorage.getItem('token'))
-      .subscribe((e: any) => {
+    this.crudService.findData('userplays/usertransaction')
+      .then((e: any) => {
       this.transactions = e;
       });
   }

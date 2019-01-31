@@ -119,8 +119,9 @@ export class ProfileComponent implements OnInit {
    */
 
   getUser() {
-    this.crudService.findPromise('userplays/byemail')
+    this.crudService.findData('users/finduser')
       .then((e: any) => {
+        console.log(e);
         this.f.firstname.patchValue(e.firstname);
         this.f.lastname.patchValue(e.lastname);
         this.f.email.patchValue(e.email);
@@ -131,6 +132,7 @@ export class ProfileComponent implements OnInit {
         this.f.bankName.patchValue(e.bankName);
 
       }).catch(e => {
+        console.log(e);
 
       });
 

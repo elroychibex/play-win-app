@@ -17,8 +17,8 @@ export class DashboardComponent implements OnInit, AfterViewInit {
 
   }
   callBal() {
-    this.crudService.getByID('userplays/useraccount', localStorage.getItem('token'))
-      .subscribe((e: any) => {
+    this.crudService.findData('userplays/useraccount')
+      .then((e: any) => {
         this.balance = e.balance;
         console.log(e);
       });

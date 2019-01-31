@@ -8,7 +8,7 @@ import { Headers, RequestOptions } from '@angular/http';
 })
 export class CrudService {
   SERVICE_URL;
-  REST_API_URL;
+  REST_API_URL = 'http://localhost:7677/OnlineScratchNWin/api/';
   URLL;
   naira = '&#8358;';
   emp_msg = {};
@@ -28,7 +28,11 @@ export class CrudService {
     }
   );
 
-
+  authHeader = new HttpHeaders({
+    'Accept': 'application/json',
+    'Authorization': btoa(unescape(encodeURIComponent(localStorage.getItem('token'))))
+  }
+  );
 
   /**
    * Log the user in http://localhost:8080/RebirthERP/api
@@ -55,51 +59,20 @@ export class CrudService {
   }
 
   constructor(private http: HttpClient) {
-    this.REST_API_URL = 'http://localhost:8080/OnlineScratchNWin/api/';
     this.emp_msg = { message: 'No data available' };
   }
-
-
-  /**
-   * 
-   * @param object the table to get all data
-   */
-
-
-
 
   getAll(object) {
     const obj = new HttpHeaders();
 
-    // obj.append('Authorization', 'Basic ' + btoa(unescape(encodeURIComponent(localStorage.getItem('token')))));
-    //  obj.append('Content-Type', 'Application/json');
-    // let headers = new HttpHeaders();
-    // headers = headers.set('Content-Type', 'application/json; charset=utf-8')
-    //   .set('Authorization', btoa(unescape(encodeURIComponent(localStorage.getItem('token')))));
-
-    // const httpOptions = {
-    //   headers: obj
-    // };
-
     const auth = localStorage.getItem('token');
-
-
-    // Basic header information
-    const header = new HttpHeaders({
-      'Content-Type': 'application/json',
-      'Accept': 'application/json',
-      'Authorization': auth
-    });
-
-    console.log(header);
     return this.http.get(this.REST_API_URL + '' + object)
       .pipe(map(res => res));
   }
 
-
   PostData(path, data) {
     return new Promise((resolve, reject) => {
-      this.http.post(this.REST_API_URL + '' + path, data, { headers: this.header })
+      this.http.post(this.REST_API_URL + '' + path, data, { headers: this.authHeader })
         .subscribe((e: any) => {
           resolve(e);
         }, error => {
@@ -110,7 +83,7 @@ export class CrudService {
 
   findData(path: string) {
     return new Promise((resolve, reject) => {
-      this.http.get(path, { headers: this.header })
+      this.http.get(this.REST_API_URL + path, { headers: this.authHeader })
         .subscribe((e: any) => {
           resolve(e);
         }, error => {
@@ -194,24 +167,6 @@ export class CrudService {
    * @param type type of notification 'info','success','warning','danger'
    * @param message message to display
    */
-  // showNotification(type, message) {
-  //   // const type = ['','info','success','warning','danger'];
-
-  //   //  const color = Math.floor((Math.random() * 4) + 1);
-
-  //   $.notify({
-  //     icon: 'notifications',
-  //     message: message
-
-  //   }, {
-  //       type: type,
-  //       timer: 4000,
-  //       placement: {
-  //         from: 'top',
-  //         align: 'center'
-  //       }
-  //     });
-  // }
 
   /**
    * 
