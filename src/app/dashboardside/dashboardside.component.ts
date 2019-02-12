@@ -40,6 +40,13 @@ export class DashboardsideComponent implements OnInit {
         this.router.navigated = false;
       }
     });
+
+    // this.router.events.subscribe((e: any) => {
+    //   // If it is a NavigationEnd event re-initalise the component
+    //   if (e instanceof NavigationEnd) {
+    // //  this.ngOnInit();
+    //   }
+    // });
   }
 
   ngOnInit() {
@@ -202,6 +209,8 @@ export class DashboardsideComponent implements OnInit {
     }
 
   }
+
+
 
   getDisplayNumber(code) {
     let displayNumber = 0;

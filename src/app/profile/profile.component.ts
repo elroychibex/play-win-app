@@ -50,10 +50,10 @@ export class ProfileComponent implements OnInit {
       password: ['', Validators.required]
     });
 
-    const a = document.querySelector('.toggle-off');
-    setInterval(() => {
-      a.classList.toggle('toggle-off');
-    }, 8000);
+    // const a = document.querySelector('.toggle-off');
+    // setInterval(() => {
+    //   a.classList.toggle('toggle-off');
+    // }, 8000);
   }
 
 
@@ -83,8 +83,8 @@ export class ProfileComponent implements OnInit {
 
     console.log(data);
 
-    this.crudService.saveData('users/updateuser', data, 0)
-      .subscribe((e: any) => {
+    this.crudService.putData('users/updateuser', data)
+      .then((e: any) => {
         console.log(e);
         const stat = parseInt(e.status, 0);
         if (stat === 2) {

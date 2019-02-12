@@ -81,6 +81,17 @@ export class CrudService {
     });
   }
 
+  putData(path, data) {
+    return new Promise((resolve, reject) => {
+      this.http.post(this.REST_API_URL + '' + path, data, { headers: this.authHeader })
+        .subscribe((e: any) => {
+          resolve(e);
+        }, error => {
+          reject(error);
+        });
+    });
+  }
+
   findData(path: string) {
     return new Promise((resolve, reject) => {
       this.http.get(this.REST_API_URL + path, { headers: this.authHeader })

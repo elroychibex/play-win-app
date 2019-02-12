@@ -13,8 +13,22 @@ export class AccountsComponent implements OnInit {
   balance;
   client: Client;
   message;
+  amount;
+  transactionRef;
+  email;
 
   constructor(private modalService: NgbModal, private crudService: CrudService) {
+    console.log(this.email)
+    this.crudService.findData('users/finduser')
+    .then((e: any) => {
+      console.log(e)
+      this.email = e.email;
+      console.log(this.email)
+    }).catch(e => {
+      console.log(e);
+
+    });
+    this.email = localStorage.getItem('username');
 
   }
 
@@ -28,6 +42,7 @@ export class AccountsComponent implements OnInit {
 
   ngOnInit() {
     this.callBal();
+   
   }
 
 
@@ -49,7 +64,21 @@ export class AccountsComponent implements OnInit {
       });
   }
 
-  createTransaction(){
-    
+  createTransaction() {
+    const amt = (<HTMLInputElement>document.getElementById('amountpay')).value;
+    const data = {
+      amount: amt
+    };
+    this.crudService.PostData('transaction/transref', data)
+      .then((e: any) => {
+        console.log('data is passed: ',e);
+        if (e.ref != null) {
+          this.amount = e.amount;
+          this.transactionRef = e.ref;
+          this.email = e.email;
+          (<HTMLInputElement>document.getElementById('invokepay')).click();
+        }
+      });
+
   }
 }
