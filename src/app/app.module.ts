@@ -17,9 +17,12 @@ import { TermsComponent } from './terms/terms.component';
 import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
-import { AlertsModule } from 'angular-alert-module';
+// import { AlertsModule } from 'angular-alert-module';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { Angular4PaystackModule } from 'angular4-paystack';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+ 
+import { ToastrModule } from 'ngx-toastr';
 
 // import { AuthInterceptor } from './auth/auth.interceptor';
 
@@ -43,7 +46,8 @@ import { Angular4PaystackModule } from 'angular4-paystack';
     HttpClientModule,
     NgxSpinnerModule,
     Angular4PaystackModule,
-    AlertsModule.forRoot(),
+    BrowserAnimationsModule, // required animations module
+    ToastrModule.forRoot(), // ToastrModule added
     NgbModule.forRoot()
   ],
   providers: [

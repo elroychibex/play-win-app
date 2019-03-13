@@ -4,7 +4,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { typeWithParameters } from '@angular/compiler/src/render3/util';
 import { CrudService } from '../services/crud.service';
 import { Router } from '@angular/router';
-import { AlertsService } from 'angular-alert-module';
+// import { AlertsService } from 'angular-alert-module';
 import { NgxSpinnerService } from 'ngx-spinner';
 
 @Component({
@@ -21,7 +21,7 @@ export class ProfileComponent implements OnInit {
 
   loginForm: FormGroup;
   constructor(private modalService: NgbModal, private formBuilder: FormBuilder,
-    private crudService: CrudService, private router: Router, private alerts: AlertsService,
+    private crudService: CrudService, private router: Router, 
     public spinner: NgxSpinnerService) { }
 
   ngOnInit() {
@@ -74,7 +74,7 @@ export class ProfileComponent implements OnInit {
     if (age < 18) {
       console.log('age cant be 18');
       this.message = 'User must be atleast 18 years old';
-      this.alerts.setMessage('User must be atleast 18 years old', 'error');
+      this.crudService.showWarning('User must be atleast 18 years old');
       return;
     }
     const data = this.registerForm.value;

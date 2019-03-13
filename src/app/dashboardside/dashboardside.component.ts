@@ -50,7 +50,7 @@ export class DashboardsideComponent implements OnInit {
   }
 
   ngOnInit() {
-    setTimeout(function () {
+   // setTimeout(function () {
       const win = window;
       this.number1 = 1000100001;
       this.number2 = 1000100001;
@@ -71,7 +71,7 @@ export class DashboardsideComponent implements OnInit {
         animation: 'count' // Count is a simpler animation method which just increments the value,
         // use it when you're looking for something more subtle.
       };
-    }, 2000);
+ //   }, 2000);
 
 
   }
@@ -122,7 +122,7 @@ export class DashboardsideComponent implements OnInit {
     if (this.playText !== 'PLAY AGAIN') {
       this.playMeter();
     } else {
-      this.ngOnInit();
+      window.location.href = '/home/dashboard';
     }
   }
 

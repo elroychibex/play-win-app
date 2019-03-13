@@ -3,12 +3,14 @@ import { map } from 'rxjs/operators';
 import { Observable } from 'rxjs';
 import { HttpHeaders, HttpClient, HttpEventType, } from '@angular/common/http';
 import { Headers, RequestOptions } from '@angular/http';
+import { ToastrService } from 'ngx-toastr';
 @Injectable({
   providedIn: 'root'
 })
 export class CrudService {
   SERVICE_URL;
-  REST_API_URL = 'http://localhost:7677/OnlineScratchNWin/api/';
+  // REST_API_URL = 'http://localhost:7677/OnlineScratchNWin/api/';
+  REST_API_URL = 'http://playnwin.atl.jelastic.vps-host.net/api/';
   URLL;
   naira = '&#8358;';
   emp_msg = {};
@@ -58,8 +60,19 @@ export class CrudService {
     return token != null;
   }
 
-  constructor(private http: HttpClient) {
+  constructor(private http: HttpClient, private toast: ToastrService) {
     this.emp_msg = { message: 'No data available' };
+  }
+
+  showSuccess(msg) {
+    this.toast.success('info', msg);
+  }
+  showError(msg) {
+    this.toast.error('info', msg);
+  }
+
+  showWarning(msg) {
+    this.toast.warning('info', msg);
   }
 
   getAll(object) {

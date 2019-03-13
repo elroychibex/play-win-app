@@ -20,14 +20,14 @@ export class AccountsComponent implements OnInit {
   constructor(private modalService: NgbModal, private crudService: CrudService) {
     console.log(this.email)
     this.crudService.findData('users/finduser')
-    .then((e: any) => {
-      console.log(e)
-      this.email = e.email;
-      console.log(this.email)
-    }).catch(e => {
-      console.log(e);
+      .then((e: any) => {
+        console.log(e)
+        this.email = e.email;
+        console.log(this.email)
+      }).catch(e => {
+        console.log(e);
 
-    });
+      });
     this.email = localStorage.getItem('username');
 
   }
@@ -42,7 +42,7 @@ export class AccountsComponent implements OnInit {
 
   ngOnInit() {
     this.callBal();
-   
+
   }
 
 
@@ -71,14 +71,54 @@ export class AccountsComponent implements OnInit {
     };
     this.crudService.PostData('transaction/transref', data)
       .then((e: any) => {
-        console.log('data is passed: ',e);
+        console.log('data is passed: ', e);
         if (e.ref != null) {
-          this.amount = e.amount;
+          this.amount = e.amount * 100;
           this.transactionRef = e.ref;
           this.email = e.email;
+          console.log('Amount: ', this.amount, " REF: ", this.transactionRef, " email: ", this.email);
           (<HTMLInputElement>document.getElementById('invokepay')).click();
         }
       });
 
+  }
+
+  paymentSucceed(response) {
+    console.log(response);
+    /**
+     * message: "Approved"
+    reference: "5708-1551768902677"
+    status: "success"
+    trans: "124266844"
+    transaction: "124266844"
+    trxref: "5708-1551768902677"
+     */
+    if (response.status == 'success') {
+
+      const data = {
+        transactionRef: response.reference,
+        merchantId: response.trans,
+        amount: this.amount
+      }
+      console.log(data);
+      this.crudService.PostData('transaction/proccesspayment', data).then((e: any) => {
+        console.log(e)
+        if (e.status == 0) {
+          window.location.href = '/home/accounts';
+        }
+      })
+        .catch(e => {
+
+        });
+    }
+  }
+
+
+
+  paymentFailed(response) {
+    console.log(response);
+  }
+  paymentCancel(){
+  alert('payment cancelled');
   }
 }

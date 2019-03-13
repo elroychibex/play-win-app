@@ -4,7 +4,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { typeWithParameters } from '@angular/compiler/src/render3/util';
 import { CrudService } from '../services/crud.service';
 import { Router } from '@angular/router';
-import { AlertsService } from 'angular-alert-module';
+// import { AlertsService } from 'angular-alert-module';
 import { NgxSpinnerService } from 'ngx-spinner';
 
 @Component({
@@ -21,7 +21,8 @@ export class HomeComponent implements OnInit {
   numbers = 1000100101;
   loginForm: FormGroup;
   constructor(private modalService: NgbModal, private formBuilder: FormBuilder,
-    private crudService: CrudService, private router: Router, private alerts: AlertsService,
+    private crudService: CrudService, private router: Router, 
+    // private alerts: AlertsService,
     public spinner: NgxSpinnerService) { }
 
   ngOnInit() {
@@ -142,7 +143,7 @@ export class HomeComponent implements OnInit {
     if (age < 18) {
       console.log('age cant be 18');
       this.message = 'User must be atleast 18 years old';
-      this.alerts.setMessage('User must be atleast 18 years old', 'error');
+      this.crudService.showWarning('User must be atleast 18 years old');
       return;
     }
     const data = this.registerForm.value;
@@ -158,7 +159,7 @@ export class HomeComponent implements OnInit {
           this.message = 'Email already exist, please Login';
         } else if (stat === 1) {
           this.message = 'Successful, Confirmation Link Has Been Sent to Your Email';
-          this.alerts.setMessage('Successful Registration', 'success');
+          this.crudService.showSuccess('Successful Registration');
         }
 
       });
@@ -170,14 +171,15 @@ export class HomeComponent implements OnInit {
         console.log(response);
         localStorage.setItem('token', response.token);
         localStorage.setItem('username', response.username);
-        this.router.navigate(['/home']);
+      //  this.router.navigate(['/home']);
+      window.location.href = '/home';
         console.log(response);
 
       },
         (err: any) => {
           console.log(err);
           //   this.isLoginError = true;
-          this.alerts.setMessage('Invalid username or password', 'error');
+          this.crudService.showError('Invalid username or password');
         });
   }
 

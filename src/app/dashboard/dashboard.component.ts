@@ -42,4 +42,8 @@ export class DashboardComponent implements OnInit, AfterViewInit {
     localStorage.clear();
     //this.route.navigate('/');
   }
+
+  gotoDashboard() {
+    window.location.href = '/home/dashboard';
+  }
 }
