@@ -8,34 +8,21 @@
                       <th scope="col">Serial Number</th>
                       <th scope="col">Date Played</th>
                       <th scope="col">Amount Played</th>
-                      <th scope="col">Status</th>        
+                      <th scope="col">Status</th>   
+                      <th scope="col">Amount Won</th>        
                     </tr>
                   </thead>
                   <tbody>
-                    <tr>
-                      <td data-label="Account">3412</td>
-                      <td data-label="Due Date">06/11/2018</td>
-                      <td data-label="Due Date">₦50</td>
-                      <td data-label="Amount" class="text-success"><strong>WON</strong></td>
+                    
+                    <tr *ngFor="let game of gamePlayed">
+                      <td data-label="Serial">{{game.serial}}</td>
+                      <td data-label="Date">{{game.date  }}</td>
+                      <td data-label="Amount">{{game.amount}}</td>
+                      <td *ngIf='game.isWon' data-label="Status" class="text-success"><strong >WON</strong></td>
+                      <td *ngIf='!game.isWon' data-label="Status" class="text-danger"><strong >LOST</strong></td>
+                      <td data-label="Amount won">{{game.amountWon}}</td>
                     </tr>
-                    <tr>
-                      <td scope="row" data-label="Account">6076</td>
-                      <td data-label="Due Date">22/05/2016</td>
-                      <td data-label="Due Date">₦100</td>
-                      <td data-label="Amount" class="text-danger"><strong>LOST</strong></td>
-                    </tr>
-                    <tr>
-                      <td scope="row" data-label="Account">5871</td>
-                      <td data-label="Due Date">04/01/2016</td>
-                      <td data-label="Due Date">₦200</td>
-                      <td data-label="Amount" class="text-success"><strong>WON</strong></td>
-                    </tr>
-                    <tr>
-                      <td scope="row" data-label="Acount">1012</td>
-                      <td data-label="Due Date">14/4/2017</td>
-                      <td data-label="Due Date">₦500</td>
-                      <td data-label="Amount" class="text-danger"><strong>LOST</strong></td>
-                    </tr>
+                  
                   </tbody>
                 </table>
           </ng-template>
@@ -46,31 +33,19 @@
                   <thead>
                     <tr>
                       <th scope="col">Account</th>
-                      <th scope="col">Date Purchased</th>
-                      <th scope="col">Amount</th>        
+                      <th scope="col">Transaction type</th>
+                      <th scope="col">Date</th>
+                      <th scope="col">Reasons</th>        
                     </tr>
                   </thead>
                   <tbody>
-                    <tr>
-                      <td data-label="Account">Visa - 3412</td>
-                      <td data-label="Due Date">04/01/2016</td>
-                      <td data-label="Amount">₦5000</td>
+                    <tr *ngFor="let tr of transactions">
+                      <td data-label="Amount">{{tr.amount}}</td>
+                      <td data-label="Type">{{tr.type}}</td>
+                      <td data-label="Date">{{tr.date}}</td>
+                      <td data-label="Reason">{{tr.reason}}</td>
                     </tr>
-                    <tr>
-                      <td scope="row" data-label="Account">Visa - 6076</td>
-                      <td data-label="Due Date">03/01/2016</td>
-                      <td data-label="Amount">₦10000</td>
-                    </tr>
-                    <tr>
-                      <td scope="row" data-label="Account">Corporate AMEX</td>
-                      <td data-label="Due Date">03/01/2016</td>
-                      <td data-label="Amount">₦2000</td>
-                    </tr>
-                    <tr>
-                      <td scope="row" data-label="Acount">Visa - 3412</td>
-                      <td data-label="Due Date">02/01/2016</td>
-                      <td data-label="Amount">₦2000</td>
-                    </tr>
+                  
                   </tbody>
                 </table>
           </ng-template>          

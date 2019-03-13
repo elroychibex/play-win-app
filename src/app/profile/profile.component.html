@@ -2,37 +2,37 @@
     <h4>Edit Profile</h4>
     <div class="row">
      <div class="col-lg-6 col-md-12">
-  <form>
+  <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
       <div class="form-row py-2">
           <div class="form-group col-md-6">                      
-            <input type="text" class="form-control" id="validationDefault01" placeholder="First Name">
+            <input type="text" class="form-control" id="validationDefault01" formControlName="firstname" placeholder="First Name">
           </div>
           <div class="form-group col-md-6">
-            <input type="text" class="form-control" id="validationDefault02" placeholder="Last Name">
+            <input type="text" class="form-control" formControlName="lastname" id="validationDefault02" placeholder="Last Name">
           </div>
         </div>
         <div class="form-row">
             <div class="form-group col-md-6">                       
-              <input type="email" class="form-control" id="validationDefault03" placeholder="Email">
+              <input type="password"  class="form-control" formControlName="oldPassword"  id="validationDefault03" placeholder="old password">
             </div>
             <div class="form-group col-md-6">                       
-              <input type="password" class="form-control" id="validationDefault04" placeholder="Password">
+              <input type="password" formControlName="newPassword" class="form-control" id="validationDefault04" placeholder="new Password">
             </div>
           </div>
           <div class="form-row">
               <div class="form-group col-md-6">                         
-                  <input id="dateOfBirth" class="form-control" placeholder="Date of Birth yyyy-mm-dd" name="dp" ngbDatepicker #dp="ngbDatepicker">
+                  <input id="dateOfBirth" formControlName="dateOfBirth" class="form-control" placeholder="Date of Birth yyyy-mm-dd" name="dp" type="date">
               </div>
               <div class="form-group col-md-6">                          
-                <input type="text" class="form-control" id="validationDefault05" placeholder="Hobbies">
+                <input type="text" class="form-control" formControlName="hobby" id="validationDefault05" placeholder="Hobbies">
               </div>
             </div>
       <div class="form-group">                  
-        <input type="text" class="form-control" id="inputAddress" placeholder="Your Address">
+        <input type="text" class="form-control" formControlName="address" id="inputAddress" placeholder="Your Address">
       </div>                
       <div class="form-row">
           <div class="form-group col-md-6">                        
-              <select id="inputState" class="form-control">
+              <select id="inputState" class="form-control" formControlName="bankName">
                 <option selected>Choose Bank</option>
                 <option>Access Bank Plc</option>
                 <option>Diamond Bank Plc</option>
@@ -54,22 +54,22 @@
               </select>
             </div> 
         <div class="form-group col-md-6">
-            <input class="form-control" id="numbersOnly" pattern="[0-9.]+" type="text" placeholder="Account Number">
+            <input class="form-control" formControlName="accountNumber" id="numbersOnly" pattern="[0-9.]+" type="text" placeholder="Account Number">
         </div>                                   
       </div>
       <button type="submit" class="btn btn-warning">Update</button>
+      <b>{{message}}</b>
     </form>
   </div>
   <div class="col-lg-6 col-md-12">
-<p>First Name:</p>
-<p>Last Name:</p>
-<p>Email Address:</p>
-<p>Date of Birth:</p>
-<p>Hobbies:</p>
-<p>Address:</p>
-<p>Date of Birth:</p>
-<p>Bank:</p>
-<p>Account Number:</p>
+<p><b>First Name:</b> {{f.firstname.value}} </p>
+<p><b>Last Name:</b> {{f.lastname.value}}</p>
+<p><b>Email Address:</b> {{f.email.value}}</p>
+<p><b>Date of Birth:</b> {{f.dateOfBirth.value}}</p>
+<p><b>Hobbies:</b> {{f.hobby.value}}</p>
+<p><b>Address:</b> {{f.address.value}}</p>
+<p><b>Bank:</b> {{f.bankName.value}}</p>
+<p><b>Account Number:</b> {{f.accountNumber.value}}</p>
   </div>
   </div>
   <div class="my-5">

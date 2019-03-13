@@ -1,3 +1,4 @@
+
 <div class="container bg my-5">
     <div class="row">
       <div class="col-lg-4 col-md-6 col-sm-12">
@@ -7,7 +8,7 @@
           </div>
           <div class="card-body">                               
             <div class="d-flex justify-content-between">
-              <span>₦2000</span>
+              <span>₦{{balance}}</span>
             </div>
           </div>
         </div>
@@ -15,11 +16,38 @@
       <div class="col-lg-4 col-md-6 col-sm-12">
           <div class="card border">
           <div class="card-header d-flex bg-dark justify-content-between">
-              <span class='p-text text-white'>Load Account</span>
+              <span class='p-text text-white'>Load Extra Credit</span>
             </div>
             <div class="card-body">                               
               <div class="d-flex justify-content-between">
-                  Buy extra units <button class="btn btn-warning px-4">Buy</button>
+                 
+                 <div> <input type="number" id="amountpay"  class="form-control" placeholder="Amount" /></div> 
+                  <div> <button class="btn btn-warning px-4" (click)="createTransaction()" >Buy</button>
+                    <button hidden class="btn btn-warning px-4" id="invokepay" data-toggle="modal" data-target="#paystackModal">Buy</button>
+                  
+                  
+                    <!-- <angular4-paystack
+                    key="pk_test_d720589674796a7e24aa0dc4a8a85475f9cf4ca2"
+                    email="{{email}}"
+                    amount="{{amount}}"
+                    [ref]="{{transactionRef}}"
+                    (close)="paymentCancel()"
+                    (callback)="paymentDone($event)"
+                    [class]="'btn btn-primary'"
+                  >Pay with Paystack</angular4-paystack> -->
+
+           
+                  </div> 
+                  <!-- <angular4-paystack
+                  [key]="'pk_test_d720589674796a7e24aa0dc4a8a85475f9cf4ca2'"
+                  [email]="email"
+                  [amount]="amount"
+                  [ref]="ref"
+               
+                  [class]="'btn btn-primary'"
+                  (close)="paymentCancel()"
+                  (callback)="paymentDone($event)"
+                >Pay  Paystack</angular4-paystack> -->
               </div>
             </div>
           </div>
@@ -37,6 +65,7 @@
             </div>
           </div>
       </div>
+      
 </div>
 <!-- Cash Out Modal -->
 <ng-template #content let-modal>
@@ -56,3 +85,47 @@
       <button type="button" class="btn btn-warning">Pay Out</button>
     </div>
   </ng-template>
+  <div>
+  
+      
+
+
+
+  </div>
+  <!-- Modal -->
+<div class="modal fade" id="paystackModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Make payment </h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <!-- <angular4-paystack-embed
+    key="pk_test_d720589674796a7e24aa0dc4a8a85475f9cf4ca2"
+    email="king@yahoo.com"
+    [amount]=amount
+    [ref]=transactionRef
+    (close)="paymentCancel()"
+    (callback)="paymentDone($event)"
+  ></angular4-paystack-embed> -->
+
+  <button
+  angular4-paystack
+  key="pk_test_d720589674796a7e24aa0dc4a8a85475f9cf4ca2"
+    email="king@yahoo.com"
+    [amount]=amount
+    [ref]=transactionRef
+  [class]="'btn btn-primary'"
+  (close)="paymentCancel()"
+  (callback)="paymentSucceed($event)"
+>Pay with Paystack</button>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+      </div>
+    </div>
+  </div>
+</div>

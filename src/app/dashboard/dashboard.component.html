@@ -7,7 +7,7 @@
 
         <ul class="list-unstyled components">
             <li>
-              <a class="nav-menu" routerLink="dashboard">Dashboard</a>                
+              <a class="nav-menu" (click)="gotoDashboard()">Dashboard</a>                
             </li>
             <li>
                 <a class="nav-menu" routerLink="accounts">Account</a> 
@@ -41,7 +41,7 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="nav navbar-nav ml-auto text-white">
                         <li class="nav-item active">
-                            <a class="nav-link" href="#">Your Balance: ₦2000</a>
+                            <a class="nav-link" href="#">Your Balance: ₦{{balance}}</a>
                         </li>
                         <!-- <li class="nav-item">
                             <a class="nav-link" href="#">Page</a>
@@ -50,7 +50,7 @@
                             <a class="nav-link" href="#">Page</a>
                         </li>-->
                         <li class="nav-item">
-                                <button class="btn btn-sm btn-danger text-white" routerLink="/">Log Out</button>
+                                <button class="btn btn-sm btn-danger text-white" (clcik)="loggout()" routerLink="/">Log Out</button>
                         </li> 
                     </ul>
                 </div>
