@@ -1,113 +1,158 @@
-
-
 .odometer {
-   font-size: 2em;
+  font-size: 2em;
 }
 
 /**
  * Quick and easy CSS3 rolling-number/slot machine?
  */
 
- .animated {
-    margin-left: 20%;
- }
+.animated {
+  margin-left: 20%;
+}
 
 #counter {
-   height: 2em;
-   overflow: hidden;
+  height: 2em;
+  overflow: hidden;
 }
 
 .digits {
-   float:left;
-   list-style-type: none;
-   font-size: 2em;
-   line-height: 1em;
+  float: left;
+  list-style-type: none;
+  font-size: 2em;
+  line-height: 1em;
 }
 
 .digits-first {
-   margin-top: -4em; /* number 4! */
+  margin-top: -4em; /* number 4! */
 }
 
 .digits-second {
-   margin-top: 0em; /* number 0! */
+  margin-top: 0em; /* number 0! */
 }
 
 .digits-third {
-   margin-top: -4em; /* number 4! */
+  margin-top: -4em; /* number 4! */
 }
 
 .digits {
-   animation-duration: 5s;
-   animation-timing-function: ease;
-   animation-delay: 2.2s;
-   animation-fill-mode: forwards;
+  animation-duration: 5s;
+  animation-timing-function: ease;
+  animation-delay: 2.2s;
+  animation-fill-mode: forwards;
 }
 
 .luckie {
-   animation-name: luckie;
+  animation-name: luckie;
 }
 
 /* Animations */
 @keyframes luckie {
-   100% {
-       margin-top: -7em;
-   }
+  100% {
+    margin-top: -7em;
+  }
 }
 
 /* The Sliding Text */
-      /* Make it a marquee */
-      .marquee {
-         width: 350px;
-         margin: 0 auto;
-         overflow: hidden;
-         white-space: nowrap;
-         box-sizing: border-box;
-         animation: marquee 15s linear infinite;
-       }
-       
-       .marquee:hover {
-         animation-play-state: paused
-       }
+/* Make it a marquee */
+.marquee {
+  width: 350px;
+  margin: 0 auto;
+  overflow: hidden;
+  white-space: nowrap;
+  box-sizing: border-box;
+  animation: marquee 15s linear infinite;
+}
+
+.marquee:hover {
+  animation-play-state: paused;
+}
 
 /* Styling for the choosing of cards */
 .img1 {
-   background: #fdef72;
-   cursor: pointer;
+  background: #fdef72;
+  cursor: pointer;
 }
 .img2 {
-   background: #45f6e2;
-   cursor: pointer;
+  background: #45f6e2;
+  cursor: pointer;
 }
 .img3 {
-   background: #51ff9c;
-   cursor: pointer;
+  background: #51ff9c;
+  cursor: pointer;
 }
 .img4 {
-   background: #ff8484;
-   cursor: pointer;
+  background: #ff8484;
+  cursor: pointer;
 }
 
 /* Input Styling */
 .labl {
-   display:flex;
-   justify-content: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
-.labl > input{ /* HIDE RADIO */
-   visibility: hidden; /* Makes input not-clickable */
-   position: absolute; /* Remove input from document flow */
+.labl > input {
+  /* HIDE RADIO */
+  visibility: hidden; /* Makes input not-clickable */
+  position: absolute; /* Remove input from document flow */
 }
-.labl > input + div{ /* DIV STYLES */
-   cursor:pointer;
-   border:2px solid transparent;
+.labl > input + div {
+  /* DIV STYLES */
+  cursor: pointer;
+  border: 2px solid transparent;
 }
-.labl > input:checked + div{ /* (RADIO CHECKED) DIV STYLES */
-   display:flex;
-   flex-direction: column;
-   align-items: center;
-   justify-content: center;
-   background: #dddddd;
-   border: 5px solid #d86f54;
-   width: 100%;
+.labl > input:checked + div {
+  /* (RADIO CHECKED) DIV STYLES */
+  display: flex;
+  flex-direction: column;
+  background: #dddddd;
+  border: 5px solid #d86f54;
+  width: 100%;
+  height: 9em;
 }
 
 /* Input Styling Ends */
+.number {
+  transform: translateY(-90px);
+  font-size: 1.3em;
+}
+/* New flip cards */
+.flip-card {
+  background-color: transparent;
+  width: 300px;
+}
+
+.flip-card-inner {
+  position: relative;
+  width: 100%;
+  height: 8em;
+  text-align: center;
+  transition: transform 0.6s;
+  transform-style: preserve-3d;
+  /* box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2); */
+}
+
+.flip-card:hover .flip-card-inner {
+  transform: rotateY(180deg);
+}
+
+.flip-card-front,
+.flip-card-back {
+  width: 100%;
+  backface-visibility: hidden;
+}
+
+.flip-card-front {
+  width: 100%;
+  color: black;
+  z-index: 2;
+  height: 8em;
+}
+
+.flip-card-back {
+  width: 100%;
+  color: rgb(27, 27, 27);
+  transform: rotateY(180deg) translateY(-130px);
+  z-index: 1;
+  height: 8em;
+}

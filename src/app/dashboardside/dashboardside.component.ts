@@ -99,7 +99,7 @@ export class DashboardsideComponent implements OnInit {
         error => {
 
           this.spinner.hide();
-          Swal('Oops...', 'Sorry error occured, or unauthorize user', 'error');
+          Swal('Oops...', 'Sorry error occured, or login again', 'error');
         });
   }
   // playMeter() {
@@ -180,10 +180,10 @@ export class DashboardsideComponent implements OnInit {
 
                 setTimeout(function () {
                   if (e.code === 0) {
-                    Swal(e.message, 'Whaooooo');
+                    Swal(e.message, 'Whaooooo, Congatulations!!');
                     d.playWinAudio();
                   } else {
-                    Swal(e.message, 'Please try again');
+                    Swal(e.message, 'Please try again, Better luck next time');
                     d.playNoWinAudio();
                   }
                 }, 5000);
