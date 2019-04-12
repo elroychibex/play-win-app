@@ -146,36 +146,37 @@
             <!-- SignUp -->
               <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
                   <div class="form-row py-2">
-                      <div class="form-group col-md-6">  *                    
-                        <input type="text" formControlName="firstname" class="form-control"  id="validationDefault01" placeholder="First Name">
+                    <small class="m-3">Sections marked with (*) are important</small>
+                      <div class="form-group col-md-6">                   
+                        <input type="text" formControlName="firstname" class="form-control"  id="validationDefault01" placeholder="First Name*">
                         <!-- <div *ngIf="submitted && f.firstname.errors" class="invalid-feedback">
                           <div *ngIf="f.firstName.errors.required">First Name is required</div>
                       </div> -->
                       </div>
-                      <div class="form-group col-md-6">*
-                        <input type="text" formControlName="lastname" class="form-control"  id="validationDefault02" placeholder="Last Name">
+                      <div class="form-group col-md-6">
+                        <input type="text" formControlName="lastname" class="form-control"  id="validationDefault02" placeholder="Last Name*">
                         <!-- <div *ngIf="submitted && f.lastname.errors" class="invalid-feedback">
                           <div *ngIf="f.lastName.errors?.required">Last Name is required</div>
                       </div> -->
                       </div>
                     </div>
                     <div class="form-row">
-                        <div class="form-group col-md-6">*                       
-                          <input type="email" formControlName="email" class="form-control"  id="validationDefault03" placeholder="Email">
+                        <div class="form-group col-md-6">                       
+                          <input type="email" formControlName="email" class="form-control"  id="validationDefault03" placeholder="Email*">
                           <!-- <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
                             <div *ngIf="f.email.errors.required">Email is invalid</div>
                         </div> -->
                         </div>
-                        <div class="form-group col-md-6"> *                     
-                          <input type="password" formControlName="password" class="form-control"   id="validationDefault04" placeholder="Password">
+                        <div class="form-group col-md-6">                     
+                          <input type="password" formControlName="password" class="form-control"   id="validationDefault04" placeholder="Password*">
                           <!-- <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
                             <div *ngIf="f.password.errors.required">Password invalid</div>
                         </div> -->
                         </div>
                       </div>
                       <div class="form-row">
-                          <div class="form-group col-md-6"> *                       
-                              <input type="date" id="dateOfBirth" class="form-control" formControlName="dateOfBirth" class="form-control"  placeholder="Date of Birth yyyy-mm-dd" name="dp" >
+                          <div class="form-group col-md-6">                      
+                              <input type="date" id="dateOfBirth" class="form-control" formControlName="dateOfBirth" class="form-control"  placeholder="Date of Birth yyyy-mm-dd*" name="dp" >
                               <!-- <div *ngIf="submitted && f.dateOfBirth.errors" class="invalid-feedback">
                                 <div *ngIf="f.dateOfBirth.errors.required">Invalid try yyyy-mm-dd</div>
                             </div> -->
@@ -184,8 +185,8 @@
                             <input type="text" formControlName="hobby" class="form-control" id="validationDefault05" placeholder="Hobbies">
                           </div>
                         </div>
-                  <div class="form-group">*             
-                    <input type="text"  formControlName="address" class="form-control" id="inputAddress" placeholder="Your Address">
+                  <div class="form-group">             
+                    <input type="text"  formControlName="address" class="form-control" id="inputAddress" placeholder="Your Address*">
                     <!-- <div *ngIf="submitted && f.address.errors" class="invalid-feedback">
                       <div *ngIf="f.address.errors.required">Address is required</div>
                   </div> -->
@@ -213,14 +214,14 @@
                             <option>Wema Bank Plc</option>  
                           </select>
                         </div> 
-                    <div class="form-group col-md-6"> *
-                        <input class="form-control" formControlName="accountNumber" id="numbersOnly" pattern="[0-9.]+" type="text" placeholder="Account Number">
+                    <div class="form-group col-md-6">
+                        <input class="form-control" formControlName="accountNumber" id="numbersOnly" pattern="[0-9.]+" type="text" placeholder="Account Number*">
                         <!-- <div *ngIf="submitted && f.accountNumber.errors" class="invalid-feedback">
                           <div *ngIf="f.accountNumber.errors.required">Account number is required</div>
                       </div> -->
                       </div>                                   
                   </div>
-                  <button type="submit" class="btn btn-warning" >Sign Up</button>
+                  <button type="submit" class="btn btn-warning my-2" >Sign Up</button>
                 <div *ngIf="submitted" >{{message}}</div>  
                 </form>
           </ng-template>
