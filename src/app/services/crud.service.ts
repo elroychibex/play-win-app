@@ -10,7 +10,7 @@ import { ToastrService } from 'ngx-toastr';
 export class CrudService {
   SERVICE_URL;
    REST_API_URL = 'http://localhost:7677/OnlineScratchNWin/api/';
-  //REST_API_URL = 'http://playnwin.atl.jelastic.vps-host.net/api/';
+  // REST_API_URL = 'http://sports365.atl.jelastic.vps-host.net/api/';
   URLL;
   naira = '&#8358;';
   emp_msg = {};

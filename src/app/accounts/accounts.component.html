@@ -77,12 +77,15 @@
     </div>
     <div class="modal-body text-center">
       <h5>Confirm Your Bank Details</h5>
-    <p>Sani Ade Chike</p>
-    <p>Diamond Bank</p>
-    <p>0012666419</p>
+    <p><b>Name: </b>{{userDetails.firstname}} {{userDetails.lastname}}</p>
+    <p><b>Bank name: </b>{{userDetails.bankName}}</p>
+    <p><b>Account number: </b>{{userDetails.accountNumber}}</p>
+    <div>
+      <input type="number" min="1000" max="500000" id="payamount" name="payamount" class="form-control"/> 
+    </div>
     </div>
     <div class="modal-footer">
-      <button type="button" class="btn btn-warning">Pay Out</button>
+      <button type="button" class="btn btn-warning" (click)="requestPayout()">Pay Out</button>
     </div>
   </ng-template>
   <div>

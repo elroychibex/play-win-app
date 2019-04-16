@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
 import { CrudService } from '../services/crud.service';
 import { NgxSoapService, Client, ISoapMethodResponse } from 'ngx-soap';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-accounts',
@@ -16,12 +17,14 @@ export class AccountsComponent implements OnInit {
   amount;
   transactionRef;
   email;
+  userDetails;
 
   constructor(private modalService: NgbModal, private crudService: CrudService) {
     console.log(this.email)
     this.crudService.findData('users/finduser')
       .then((e: any) => {
-        console.log(e)
+        console.log(e);
+        this.userDetails = e;
         this.email = e.email;
         console.log(this.email)
       }).catch(e => {
@@ -118,7 +121,51 @@ export class AccountsComponent implements OnInit {
   paymentFailed(response) {
     console.log(response);
   }
-  paymentCancel(){
-  alert('payment cancelled');
+  paymentCancel() {
+    alert('payment cancelled');
+  }
+
+
+  requestPayout() {
+    const amt = parseInt((<HTMLInputElement>document.getElementById('payamount')).value, 0);
+    if (amt > 1000) {
+      Swal({
+        title: 'Request for payment',
+        text: 'You are requesting payout of ' + amt + ' ',
+        type: 'warning',
+        showCancelButton: true,
+        confirmButtonText: 'Make request',
+        cancelButtonText: 'Nope! not ready'
+      }).then((result) => {
+
+        const playParam = {
+          'amount': amt
+        };
+        console.log(playParam);
+
+
+        this.crudService.PostData('users/payoutrequest', playParam)
+          .then((e: any) => {
+            if (e.code === 0) {
+              Swal('Request made', e.message, 'success');
+            } else if (e.code === 1) {
+              Swal('error', e.message, 'warning');
+            } else {
+              Swal('Error occured', e.message, 'error');
+            }
+
+
+
+          });
+
+
+
+        // For more information about handling dismissals please visit
+        // https://sweetalert2.github.io/#handling-dismissals
+
+      });
+    } else {
+      Swal('Warning', 'Minimum amount to withdraw is #1000', 'warning');
+    }
   }
 }
