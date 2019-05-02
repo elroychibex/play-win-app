@@ -4,48 +4,48 @@
 
 /* Falling Dices Animation Starts Here */
 .falling span {
-    display: inline-block;
-    width: 80px;
-    height: 80px;
-    margin: -280px 40px 54px -34px;    
-    background:url("../../assets/notes.jpg") no-repeat;    
-    -webkit-animation: falling 5s infinite linear;
-    -moz-animation: falling 5s infinite linear;
-    }
+  display: inline-block;
+  width: 80px;
+  height: 80px;
+  margin: -280px 40px 54px -34px;
+  background: url("../../assets/notes.jpg") no-repeat;
+  animation: falling 5s infinite linear;
+  -moz-animation: falling 5s infinite linear;
+}
 
-    .falling span:nth-child(5n+5) {
-        -webkit-animation-delay: 1s;
-        -moz-animation-delay: 1s;
-        }
-        
-        .falling span:nth-child(3n+2) {
-        -webkit-animation-delay: 1.5s;
-        -moz-animation-delay: 1.5s;
-        }
-        
-        .falling span:nth-child(2n+5) {
-        -webkit-animation-delay: 1.7s;
-        -moz-animation-delay: 1.7s;
-        }
+.falling span:nth-child(5n + 5) {
+  animation-delay: 1s;
+  -moz-animation-delay: 1s;
+}
 
-        @-webkit-keyframes falling {
-            0% {
-            opacity: 1;
-            -webkit-transform: translate(0, 0px) rotateZ(0deg);
-            }
-            75% {
-            opacity: 1;
-            -webkit-transform: translate(100px, 600px) rotateZ(270deg);
-            }
-            100% {
-            opacity: 0;
-            -webkit-transform: translate(150px, 800px) rotateZ(360deg);
-            }
-            }
-    /* Falling Animation Ends Here */
+.falling span:nth-child(3n + 2) {
+  animation-delay: 1.5s;
+  -moz-animation-delay: 1.5s;
+}
+
+.falling span:nth-child(2n + 5) {
+  animation-delay: 1.7s;
+  -moz-animation-delay: 1.7s;
+}
+
+@keyframes falling {
+  0% {
+    opacity: 1;
+    -webkit-transform: translate(0, 0px) rotateZ(0deg);
+  }
+  75% {
+    opacity: 1;
+    -webkit-transform: translate(100px, 600px) rotateZ(270deg);
+  }
+  100% {
+    opacity: 0;
+    -webkit-transform: translate(150px, 800px) rotateZ(360deg);
+  }
+}
+/* Falling Animation Ends Here */
 
 /* The Sliding Text */
-      /* Make it a marquee */
+/* Make it a marquee */
 .marquee {
   width: 450px;
   margin: 0 auto;
@@ -56,18 +56,22 @@
 }
 
 .marquee:hover {
-  animation-play-state: paused
+  animation-play-state: paused;
 }
 
 /* Make it move */
 @keyframes marquee {
-  0%   { text-indent: 27.5em }
-  100% { text-indent: -50em }
+  0% {
+    text-indent: 27.5em;
+  }
+  100% {
+    text-indent: -50em;
+  }
 }
 
 /* Toggle Button */
 .toggle-off {
-display: none !important;
+  display: none !important;
 }
 
 .badge {
@@ -80,7 +84,7 @@ display: none !important;
 }
 .list {
   margin: auto;
-  height: 285px;
+  height: 30em;
   width: 100%;
   overflow-y: scroll; /* This changed */
 }
@@ -101,42 +105,42 @@ li {
   padding: 5%;
   /* text-align: center; */
   -webkit-animation: fadeIn 0.5s linear;
-          animation: fadeIn 0.5s linear;
+  animation: fadeIn 0.5s linear;
   -webkit-animation-fill-mode: both;
-          animation-fill-mode: both;
+  animation-fill-mode: both;
 }
 
 li:nth-child(1) {
   -webkit-animation-delay: 4s;
-          animation-delay: 4s;
+  animation-delay: 4s;
 }
 
 li:nth-child(2) {
   -webkit-animation-delay: 7s;
-          animation-delay: 7s;
+  animation-delay: 7s;
 }
 
 li:nth-child(3) {
   -webkit-animation-delay: 10s;
-          animation-delay: 10s;
+  animation-delay: 10s;
 }
 
 li:nth-child(4) {
   -webkit-animation-delay: 13s;
-          animation-delay: 13s;
+  animation-delay: 13s;
 }
 
 li:nth-child(5) {
   -webkit-animation-delay: 16s;
-          animation-delay: 16s;
+  animation-delay: 16s;
 }
 
 li:nth-child(6) {
   -webkit-animation-delay: 19s;
-          animation-delay: 19s;
+  animation-delay: 19s;
 }
 
-@-webkit-keyframes fadeIn {
+@keyframes fadeIn {
   0% {
     opacity: 0;
     top: 100px;
@@ -149,4 +153,3 @@ li:nth-child(6) {
     opacity: 1;
   }
 }
-

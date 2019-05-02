@@ -6,6 +6,7 @@ import { CrudService } from '../services/crud.service';
 import { Router } from '@angular/router';
 // import { AlertsService } from 'angular-alert-module';
 import { NgxSpinnerService } from 'ngx-spinner';
+import * as $ from 'jquery'
 
 @Component({
   selector: 'app-home',
@@ -59,6 +60,25 @@ export class HomeComponent implements OnInit {
     setInterval(() => {
       a.classList.toggle('toggle-off');
     }, 8000);
+
+// Auto Scrolling Method here
+    $(function(){
+      var tickerLength = $('.container ul li').length;
+      var tickerHeight = $('.container ul li').outerHeight();
+      $('.container ul li:last-child').prependTo('.container ul');
+      $('.container ul').css('marginTop',-tickerHeight);
+      function moveTop(){
+        $('.container ul').animate({
+          top : -tickerHeight
+        },600, function(){
+         $('.container ul li:first-child').appendTo('.container ul');
+          $('.container ul').css('top','');
+        });
+       }
+      setInterval( function(){
+        moveTop();
+      }, 3000);
+      });
   }
 
   open(content) {
