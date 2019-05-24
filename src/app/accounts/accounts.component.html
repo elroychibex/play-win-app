@@ -115,10 +115,10 @@
     (callback)="paymentDone($event)"
   ></angular4-paystack-embed> -->
 
-  <button
+  <button class="btn btn-warning"
   angular4-paystack
-  key="pk_test_d720589674796a7e24aa0dc4a8a85475f9cf4ca2"
-    email="king@yahoo.com"
+  key="pk_live_48e8e7cade6db04d1b2a3f065cb6f9abacba9e5f"
+    [email]=email
     [amount]=amount
     [ref]=transactionRef
   [class]="'btn btn-primary'"
