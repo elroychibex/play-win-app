@@ -26,6 +26,7 @@ export class DashboardsideComponent implements OnInit {
   showMeter = false;
   playText = 'PLAY';
   isPlayed = false;
+  amt: Number = 0;
 
 
 
@@ -50,28 +51,32 @@ export class DashboardsideComponent implements OnInit {
   }
 
   ngOnInit() {
-   // setTimeout(function () {
-      const win = window;
-      this.number1 = 1000100001;
-      this.number2 = 1000100001;
-      this.number3 = 1000100001;
-      this.number4 = 1000100001;
-      this.selectedNumber = 0;
-      this.showSpin = false;
-      this.showMeter = false;
-      this.playText = 'PLAY';
-      this.isPlayed = false;
+    // setTimeout(function () {
+    const win = window;
+    this.number1 = 1000100001;
+    this.number2 = 1000100001;
+    this.number3 = 1000100001;
+    this.number4 = 1000100001;
+    this.selectedNumber = 0;
+    this.showSpin = false;
+    this.showMeter = false;
+    this.playText = 'PLAY';
+    this.isPlayed = false;
 
-      win.odometerOptions = {
-        auto: false, // Don't automatically initialize everything with class 'odometer'
-        //   selector: '.my-numbers', // Change the selector used to automatically find things to be animated
-        format: '(,ddd).dd', // Change how digit groups are formatted, and how many digits are shown after the decimal point
-        duration: 6000, // Change how long the javascript expects the CSS animation to take
-        // theme: 'car', // Specify the theme (if you have more than one theme css file on the page)
-        animation: 'count' // Count is a simpler animation method which just increments the value,
-        // use it when you're looking for something more subtle.
-      };
- //   }, 2000);
+    win.odometerOptions = {
+      auto: false, // Don't automatically initialize everything with class 'odometer'
+      //   selector: '.my-numbers', // Change the selector used to automatically find things to be animated
+      format: '(,ddd).dd', // Change how digit groups are formatted, and how many digits are shown after the decimal point
+      duration: 6000, // Change how long the javascript expects the CSS animation to take
+      // theme: 'car', // Specify the theme (if you have more than one theme css file on the page)
+      animation: 'count' // Count is a simpler animation method which just increments the value,
+      // use it when you're looking for something more subtle.
+    };
+    //   }, 2000);
+    if (localStorage.getItem('amt') != null){
+      this.amt = parseInt(localStorage.getItem('amt'), 0);
+      this.showSpin=true;
+    }
 
 
   }
@@ -79,7 +84,17 @@ export class DashboardsideComponent implements OnInit {
   selectAmount(event) {
     this.amount = event.target.value;
     this.showSpin = true;
-
+    localStorage.setItem('amt', this.amount);
+    this.amt = parseInt(localStorage.getItem('amt'), 0);
+  }
+  checkSelectedAmount() {
+    if (localStorage.getItem('amt') != null) {
+      this.showSpin = true;
+      return true;
+    } else {
+      this.showSpin = false;
+      return false;
+    }
   }
 
   getValues() {
@@ -99,7 +114,7 @@ export class DashboardsideComponent implements OnInit {
         error => {
 
           this.spinner.hide();
-          Swal('Oops...', 'Sorry error occured, or login again', 'error');
+          Swal('Oops...', 'Session timed out, please logout and login again', 'error');
         });
   }
   // playMeter() {
@@ -147,6 +162,7 @@ export class DashboardsideComponent implements OnInit {
   }
 
   playMeter() {
+    this.amount = parseInt(localStorage.getItem('amt'), 0);
     if (this.selectedNumber !== 0) {
       if (this.selectedNumber !== 1000100001) {
 
@@ -155,8 +171,8 @@ export class DashboardsideComponent implements OnInit {
           text: 'You selected ' + this.selectedNumber + ' with amount of ' + this.amount,
           type: 'warning',
           showCancelButton: true,
-          confirmButtonText: 'Yes, Play',
-          cancelButtonText: 'Nope! not ready'
+          confirmButtonText: 'Yes, Play with this number',
+          cancelButtonText: 'Not ready'
         }).then((result) => {
           this.isPlayed = true;
           if (result.value) {
@@ -180,7 +196,7 @@ export class DashboardsideComponent implements OnInit {
 
                 setTimeout(function () {
                   if (e.code === 0) {
-                    Swal(e.message, 'Whaooooo, Congatulations!!');
+                    Swal(e.message, 'Whaooooo, Congatulations!! you just won');
                     d.playWinAudio();
                   } else {
                     Swal(e.message, 'Please try again, Better luck next time');
@@ -202,7 +218,7 @@ export class DashboardsideComponent implements OnInit {
         });
 
       } else {
-        Swal('Oops...', 'Please reshuffle cards', 'error');
+        Swal('Oops...', 'Please reshuffle cards again', 'error');
       }
     } else {
       Swal('Oops...', 'Please select card first', 'error');
@@ -219,7 +235,7 @@ export class DashboardsideComponent implements OnInit {
     } else if (code === 1) {
 
       const noWinNumbers = [];
-      const numArray = [this.number1, this.number2, this.number3];
+      const numArray = [this.number1, this.number2, this.number3, this.number4];
       numArray.forEach(num => {
         if (this.selectedNumber !== num) {
           noWinNumbers.push(num);
