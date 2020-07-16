@@ -35,7 +35,7 @@
     "events": "^3.0.0",
     "font-awesome": "^4.7.0",
     "jquery": "^3.4.0",
-    "lodash": "^4.17.11",
+    "lodash": "^4.17.19",
     "ngx-soap": "^0.6.0",
     "ngx-spinner": "^6.1.2",
     "ngx-toastr": "^9.1.2",
